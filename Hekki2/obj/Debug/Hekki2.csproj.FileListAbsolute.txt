@@ -1,0 +1,17 @@
+C:\Users\ProDesk\source\repos\Hekki2\Hekki2\bin\Debug\Hekki2.exe.config
+C:\Users\ProDesk\source\repos\Hekki2\Hekki2\bin\Debug\Hekki2.exe
+C:\Users\ProDesk\source\repos\Hekki2\Hekki2\bin\Debug\Hekki2.pdb
+C:\Users\ProDesk\source\repos\Hekki2\Hekki2\obj\Debug\Hekki2.csproj.AssemblyReference.cache
+C:\Users\ProDesk\source\repos\Hekki2\Hekki2\obj\Debug\Hekki2.csproj.SuggestedBindingRedirects.cache
+C:\Users\ProDesk\source\repos\Hekki2\Hekki2\obj\Debug\Hekki2.Main.resources
+C:\Users\ProDesk\source\repos\Hekki2\Hekki2\obj\Debug\Hekki2.Properties.Resources.resources
+C:\Users\ProDesk\source\repos\Hekki2\Hekki2\obj\Debug\Hekki2.csproj.GenerateResource.cache
+C:\Users\ProDesk\source\repos\Hekki2\Hekki2\obj\Debug\Hekki2.csproj.CoreCompileInputs.cache
+C:\Users\ProDesk\source\repos\Hekki2\Hekki2\obj\Debug\Hekki2.exe
+C:\Users\ProDesk\source\repos\Hekki2\Hekki2\obj\Debug\Hekki2.pdb
+C:\Users\ProDesk\source\repos\Hekki2\Hekki2\bin\Debug\IronOcr.dll
+C:\Users\ProDesk\source\repos\Hekki2\Hekki2\bin\Debug\System.Drawing.Common.dll
+C:\Users\ProDesk\source\repos\Hekki2\Hekki2\bin\Debug\IronOcr.xml
+C:\Users\ProDesk\source\repos\Hekki2\Hekki2\bin\Debug\System.Drawing.Common.xml
+C:\Users\ProDesk\source\repos\Hekki2\Hekki2\obj\Debug\Hekki2.SprintReg.resources
+C:\Users\ProDesk\source\repos\Hekki2\Hekki2\obj\Debug\Hekki2.csproj.CopyComplete

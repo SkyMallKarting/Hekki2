@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32602.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hekki2", "Hekki2\Hekki2.csproj", "{685F0D6A-2D1B-4A34-84B3-360A88CB0B80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelWorker.Test", "ExcelWorker.Test\ExcelWorker.Test.csproj", "{C975B2F6-C635-4BD9-BC22-37F604BBBF46}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{685F0D6A-2D1B-4A34-84B3-360A88CB0B80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{685F0D6A-2D1B-4A34-84B3-360A88CB0B80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{685F0D6A-2D1B-4A34-84B3-360A88CB0B80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{685F0D6A-2D1B-4A34-84B3-360A88CB0B80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C975B2F6-C635-4BD9-BC22-37F604BBBF46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C975B2F6-C635-4BD9-BC22-37F604BBBF46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C975B2F6-C635-4BD9-BC22-37F604BBBF46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C975B2F6-C635-4BD9-BC22-37F604BBBF46}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C2D6FF2B-EFE7-4A08-8455-363AB04FC1B1}
+	EndGlobalSection
+EndGlobal
