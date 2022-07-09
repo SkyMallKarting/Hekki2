@@ -201,15 +201,28 @@ namespace Hekki
             }
         }
 
-        public static void WriteNamesInTotalBoard(Application excel)
+        public static void WriteNamesInTotalBoard(Application excel, List<string> names)
         {
-
+            var keyCells = FindKeyCellByValue(excel, "Имя", null);
+            CleanColumnAfterKey(excel, keyCells[0]);
+            for (int i = 2, j = 0; j < names.Count; i++, j++)
+            {
+                keyCells[0][i] = names[j];
+            }
         }
 
-        private static List<string> ReadNamesFromTxt()
+        public static List<string> ReadTestNamesFromTxt()
         {
-            List<string> names = File.ReadAllLines(@"../../../ExcelWorker.Test/TestNames.txt").ToList();
+            List<string> names = File.ReadAllLines(@"../../../TestNames.txt").ToList();
             return names;
+        }
+
+        public static void CleanColumnAfterKey(Application excel, Range keyCell)
+        {
+            for (int i = 2; i < 100; i++)
+            {
+                keyCell[i] = "";
+            }
         }
     }
 }
