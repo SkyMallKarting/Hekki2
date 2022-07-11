@@ -45,7 +45,7 @@ namespace Hekki
         public static void WriteNames(Application excel, List<List<Pilot>> groups, int numberRace, string keyWord)
         {
             var keyCells = FindKeyCellByValue(excel, keyWord, true, null);
-            var startIndex = GetStartIndex(excel, keyCells[1].Row, keyCells[1].Column);
+            var startIndex = GetStartIndexOfEmptyTable(excel, keyCells[1].Row, keyCells[1].Column);
 
             foreach (var group in groups)
             {
@@ -70,7 +70,7 @@ namespace Hekki
             }
         }
 
-        private static int GetStartIndex(Application excel, int row, int column)
+        private static int GetStartIndexOfEmptyTable(Application excel, int row, int column)
         {
             int index = row;
             while (excel.Cells[index, column].Value != null)
@@ -163,7 +163,6 @@ namespace Hekki
 
         public static Dictionary<string, List<int>> ReadScores(Application excel, int pilotsCount)
         {
-
             var keyCells = FindKeyCellByValue(excel, "Пилоты", null);
             
             Dictionary<string, List<int>> score = new Dictionary<string, List<int>>();
@@ -189,7 +188,7 @@ namespace Hekki
             return score;
         }
 
-        public static void WriteScore(Application excel, List<Pilot> pilots)
+        public static void WriteScoreInTotalBoard(Application excel, List<Pilot> pilots)
         {
             for (int i = 1; i < pilots[0].ScoresCount + 1; i++)
             {

@@ -5,7 +5,9 @@ VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hekki2", "Hekki2\Hekki2.csproj", "{685F0D6A-2D1B-4A34-84B3-360A88CB0B80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelWorker.Test", "ExcelWorker.Test\ExcelWorker.Test.csproj", "{C975B2F6-C635-4BD9-BC22-37F604BBBF46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcelWorker.Test", "ExcelWorker.Test\ExcelWorker.Test.csproj", "{C975B2F6-C635-4BD9-BC22-37F604BBBF46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Race.Test", "Race.Test\Race.Test.csproj", "{2B58301E-682D-4E15-A9CC-EC933A0F7D66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C975B2F6-C635-4BD9-BC22-37F604BBBF46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C975B2F6-C635-4BD9-BC22-37F604BBBF46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C975B2F6-C635-4BD9-BC22-37F604BBBF46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B58301E-682D-4E15-A9CC-EC933A0F7D66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B58301E-682D-4E15-A9CC-EC933A0F7D66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B58301E-682D-4E15-A9CC-EC933A0F7D66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B58301E-682D-4E15-A9CC-EC933A0F7D66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

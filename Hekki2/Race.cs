@@ -35,7 +35,7 @@ namespace Hekki
             ExcelWorker.WriteNames(workSheet, groups, numberRace, "Пилоты");
         }
 
-        private static void DoAssignmentToGroup(List<Pilot> group, List<int> numbersOfKarts, int numberRace)
+        public static void DoAssignmentToGroup(List<Pilot> group, List<int> numbersOfKarts, int numberRace)
         {
             List<int> copyNumbersOfKarts;
             CopyList(numbersOfKarts, copyNumbersOfKarts = new List<int>());
@@ -63,7 +63,7 @@ namespace Hekki
             }
         }
 
-        private static List<List<Pilot>> DivideByGroup(List<Pilot> pilots, List<int> numbersOfKarts)
+        public static List<List<Pilot>> DivideByGroup(List<Pilot> pilots, List<int> numbersOfKarts)
         {
             Shuffle(pilots);
 
@@ -83,24 +83,7 @@ namespace Hekki
             return groups;
         }
 
-        private static List<List<Pilot>> DivideGroupByOdd(List<Pilot> pilots, List<int> numbersOfKarts)
-        {
-            List<List<Pilot>> groups = new List<List<Pilot>>();
-            for (int i = 0; i < pilots.Count; i++)
-            {
-                if (i % 2 == 0)
-                {
-                    
-                }
-                else
-                {
-
-                }
-            }
-            return null;
-        }
-
-        private static void Shuffle<T>(IList<T> list)
+        public static void Shuffle<T>(IList<T> list)
         {
             int n = list.Count;
             while (n > 1)
@@ -113,7 +96,7 @@ namespace Hekki
             }
         }
         // TODO: Повертати новий список за допомогою ToList()
-        private static void CopyList<T>(List<T> source, List<T> destination)
+        public static void CopyList<T>(List<T> source, List<T> destination)
         {
             Shuffle(source);
             source.ForEach((item) =>

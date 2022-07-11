@@ -41,7 +41,7 @@ namespace Hekki
             {
                 pilot.AddScore(dic);
             }
-            ExcelWorker.WriteScore(excel, pilots);
+            ExcelWorker.WriteScoreInTotalBoard(excel, pilots);
         }
     }
 }

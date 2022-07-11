@@ -1,9 +1,39 @@
 using Microsoft.Office.Interop.Excel;
 namespace ExcelWorker.Test
 {
-    public class Tests
+    [TestFixture]
+    public class ReadNamesTests
     {
         private static Application excel = Hekki.ExcelWorker.GetExcel();
+        private List<string> namesOriginal;
+
+        [SetUp]
+        public void Setup()
+        {
+            namesOriginal = Hekki.ExcelWorker.ReadNames(excel);
+            var testNames = Hekki.ExcelWorker.ReadTestNamesFromTxt();
+            Hekki.ExcelWorker.WriteNamesInTotalBoard(excel, testNames);
+        }
+
+        [TearDown]
+        public void Cleanup()
+        {
+            Hekki.ExcelWorker.WriteNamesInTotalBoard(excel, namesOriginal);
+        }
+
+        [TestCase(new List<string>() { })]
+        public void ReturnedNamesIsExpected(List<string> s)
+        {
+            
+
+            var names = Hekki.ExcelWorker.ReadNames(excel);
+
+            for (int i = 0; i < s.Count; i++)
+            {
+                Assert.AreEqual(s[i], names[i]);
+            }
+        }
+
         [Test]
         public void NamesLengthMoreZero()
         {
@@ -14,24 +44,6 @@ namespace ExcelWorker.Test
             {
                 Assert.IsTrue(name.Length > 0);
             }
-        }
-
-        [Test]
-        public void ReturnedNamesIsExpected()
-        {
-            // TODO: Сделать запись тестовых данных в конструкторе, а возврат оригинальных значений в деструкторе(?)
-            var namesOriginal = Hekki.ExcelWorker.ReadNames(excel);
-            var testNames = Hekki.ExcelWorker.ReadTestNamesFromTxt();
-            Hekki.ExcelWorker.WriteNamesInTotalBoard(excel, testNames);
-
-            var names = Hekki.ExcelWorker.ReadNames(excel);
-
-            for (int i = 0; i < testNames.Count; i++)
-            {
-                Assert.AreEqual(testNames[i], names[i]);
-            }
-
-            Hekki.ExcelWorker.WriteNamesInTotalBoard(excel, namesOriginal);
         }
 
         [Test]
