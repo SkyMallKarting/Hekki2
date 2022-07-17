@@ -11,6 +11,7 @@ namespace Hekki
     {
         private static int count = 0;
         private static int maxKarts = SprintReg.GetMaxKarts();
+        public static Application excel = GetExcel();
         public static Application GetExcel()
         {
             Application myExcel;
@@ -27,9 +28,29 @@ namespace Hekki
             return myExcel;
         }
 
-        public static List<string> ReadNames(Application excel)
+        public static List<string> ReadNamesInTotalBoard()
         {
-            var keyCells = FindKeyCellByValue(excel, "Имя", null);
+            var keyCells = FindKeyCellByValue("Имя", null);
+            List<string> names = new List<string>();
+
+            int i = 2;  
+            while (keyCells[0].Cells[i].Value != null)
+            {
+                names.Add(keyCells[0].Cells[i].Value.ToString());
+                i++;
+            }
+
+            return names;
+        }
+
+        public static Range GetRangeToSort()
+        {
+            return excel.get_Range("C4", "J100");
+        }
+
+        public static List<string> ReadUsedKartsInTotalBoard()
+        {
+            var keyCells = FindKeyCellByValue("Имя", null);
             List<string> names = new List<string>();
 
             int i = 2;
@@ -42,10 +63,25 @@ namespace Hekki
             return names;
         }
 
-        public static void WriteNames(Application excel, List<List<Pilot>> groups, int numberRace, string keyWord)
+        public static List<string> ReadScoresInTotalBoard()
         {
-            var keyCells = FindKeyCellByValue(excel, keyWord, true, null);
-            var startIndex = GetStartIndexOfEmptyTable(excel, keyCells[1].Row, keyCells[1].Column);
+            var keyCells = FindKeyCellByValue("Имя", null);
+            List<string> names = new List<string>();
+
+            int i = 2;
+            while (keyCells[0].Cells[i].Value != null)
+            {
+                names.Add(keyCells[0].Cells[i].Value.ToString());
+                i++;
+            }
+
+            return names;
+        }
+
+        public static void WriteNames(List<List<Pilot>> groups, int numberRace, string keyWord)
+        {
+            var keyCells = FindKeyCellByValue(keyWord, true, null);
+            var startIndex = GetStartIndexOfEmptyTable(keyCells[1].Row, keyCells[1].Column);
 
             foreach (var group in groups)
             {
@@ -70,7 +106,7 @@ namespace Hekki
             }
         }
 
-        private static int GetStartIndexOfEmptyTable(Application excel, int row, int column)
+        private static int GetStartIndexOfEmptyTable(int row, int column)
         {
             int index = row;
             while (excel.Cells[index, column].Value != null)
@@ -90,13 +126,13 @@ namespace Hekki
         }
 
         public static Microsoft.Office.Interop.Excel.Range FindKeyCellByValue(
-            Application excel,
             string value,
             bool needEmpty,
             Range searchedRange)
         {
             if (searchedRange == null)
                 searchedRange = excel.get_Range("A1", "XFD1048576");
+
             var finded = searchedRange.Find(value);
             var firstAdress = finded.Address;
             while (excel.Cells[finded.Row + 1, finded.Column].Value != null && needEmpty)
@@ -110,7 +146,6 @@ namespace Hekki
         }
 
         public static List<Microsoft.Office.Interop.Excel.Range> FindKeyCellByValue(
-            Application excel,
             string value,
             Range searchedRange)
         {
@@ -129,10 +164,11 @@ namespace Hekki
             }
         }
 
-        public static void CleanData(Application excel, int row)
+        public static void CleanData(int row)
         {
             Microsoft.Office.Interop.Excel.Range searchedRange = excel.get_Range("A1", "XFD1048576");
             var finded = searchedRange.Find("Пилоты");
+            var firstAddres = finded.Address;
             var column = finded.Column;
             int i = 0;
             do
@@ -146,12 +182,14 @@ namespace Hekki
                 finded = searchedRange.FindNext(finded);
                 column = finded.Column;
                 i++;
-            } while (i < 3);
+                if (finded.Address == firstAddres)
+                    break;
+            } while (i < 50);
         }
 
-        public static void WriteUsedKarts(Application excel, List<Pilot> pilots)
+        public static void WriteUsedKarts(List<Pilot> pilots)
         {
-            var keyCells = FindKeyCellByValue(excel, "Карты", null);
+            var keyCells = FindKeyCellByValue("Карты", null);
             var startIndex = keyCells[0].Row + 1;
             for (int i = 0; i < pilots.Count; i++)
             {
@@ -161,9 +199,9 @@ namespace Hekki
             }
         }
 
-        public static Dictionary<string, List<int>> ReadScores(Application excel, int pilotsCount)
+        public static Dictionary<string, List<int>> ReadScoresInRace(int pilotsCount)
         {
-            var keyCells = FindKeyCellByValue(excel, "Пилоты", null);
+            var keyCells = FindKeyCellByValue("Пилоты", null);
             
             Dictionary<string, List<int>> score = new Dictionary<string, List<int>>();
             for (int j = 0; j < keyCells.Count; j++)
@@ -188,26 +226,37 @@ namespace Hekki
             return score;
         }
 
-        public static void WriteScoreInTotalBoard(Application excel, List<Pilot> pilots)
+        public static void WriteScoreInTotalBoard(List<Pilot> pilots)
         {
             for (int i = 1; i < pilots[0].ScoresCount + 1; i++)
             {
                 for (int j = 0; j < pilots.Count; j++)
                 {
-                    var cell = FindKeyCellByValue(excel, pilots[j].Name, false, excel.get_Range("A1", "K100"));
-                    excel.Cells[cell.Row, cell.Column + i].Value = pilots[j].GetScoreByNumberRace(i - 1).ToString();
+                    var cell = FindKeyCellByValue(pilots[j].Name, excel.get_Range("A1", "K100"));
+                    excel.Cells[cell[0].Row, cell[0].Column + i].Value = pilots[j].GetScoreByNumberRace(i - 1).ToString();
                 }
             }
         }
 
-        public static void WriteNamesInTotalBoard(Application excel, List<string> names)
+        public static void WriteNamesInTotalBoard(List<string> names)
         {
-            var keyCells = FindKeyCellByValue(excel, "Имя", null);
-            CleanColumnAfterKey(excel, keyCells[0]);
+            var keyCells = FindKeyCellByValue("Имя", null);
+            CleanColumnAfterKey(keyCells[0]);
             for (int i = 2, j = 0; j < names.Count; i++, j++)
             {
                 keyCells[0][i] = names[j];
             }
+        }
+
+        public static List<string> ReadDataFromTotalBoard(int countPilots)
+        {
+            var keyCells = FindKeyCellByValue("Имя", null);
+            List<string> data = new List<string>();
+            for (int i = 2; i < countPilots + 2; i++)
+            {
+                data.Add(keyCells[0][i, 0].Value + "?" + keyCells[0][i].Value + "?" + keyCells[0][i, 7].Value);
+            }
+            return data;
         }
 
         public static List<string> ReadTestNamesFromTxt()
@@ -216,7 +265,7 @@ namespace Hekki
             return names;
         }
 
-        public static void CleanColumnAfterKey(Application excel, Range keyCell)
+        public static void CleanColumnAfterKey(Range keyCell)
         {
             for (int i = 2; i < 100; i++)
             {

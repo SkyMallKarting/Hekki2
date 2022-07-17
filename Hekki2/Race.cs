@@ -11,29 +11,48 @@ namespace Hekki
     {
         public readonly int MaxOfKarts = SprintReg.GetMaxKarts();
         private static Random rng = new Random();
-        public static void Start(List<Pilot> pilots, List<int> numbers, int numberRace, Application workSheet)
+        private static int CountPilotsInLastGroup;
+        public static void Start(List<Pilot> pilots, List<int> numbers, int numberRace)
         {
-            
-            List<List<Pilot>> groups = new List<List<Pilot>>();
-            //if (numberRace == 4)
-            //{
-            //    List<Pilot> group = pilots;
-            //    DoAssignmentToGroup(group, numbers, numberRace);
-            //}
-            //if (numberRace == 3)
-            //{
-            //    groups = DevideGroupByOdd(pilots, numbers);
-            //    for (int i = 0; i < groups.Count; i++)
-            //        DoAssignmentToGroup(groups[i], numbers, numberRace);
 
-            //}
-            
+            List<List<Pilot>> groups = new List<List<Pilot>>();
+            if (numberRace == 4)
+            {
+                var sortedPilots = MakePilotsFromTotalBoard(pilots.Count);
+                RemoveWorstPilots(sortedPilots);
+                groups = DivideByGroup(sortedPilots, numbers);
+                DoAssignmentToGroup(groups[0], numbers, numberRace);
+            }
+            if (numberRace == 3)
+            {
+                //var sortedPilots = MakePilotsFromTotalBoard(pilots.Count);
+                pilots = MakePilotsFromTotalBoard(pilots.Count);
+                RemoveWorstPilots(pilots);
                 groups = DivideByGroup(pilots, numbers);
                 for (int i = 0; i < groups.Count; i++)
                     DoAssignmentToGroup(groups[i], numbers, numberRace);
-            
-            ExcelWorker.WriteNames(workSheet, groups, numberRace, "Пилоты");
+
+            }
+            else
+            {
+                Shuffle(pilots);
+                groups = DivideByGroup(pilots, numbers);
+                for (int i = 0; i < groups.Count; i++)
+                    DoAssignmentToGroup(groups[i], numbers, numberRace);
+
+            }
+            ExcelWorker.WriteNames(groups, numberRace, "Пилоты");
         }
+
+        private static void RemoveWorstPilots(List<Pilot> sortedPilots)
+        {
+            for (int i = 0; i < CountPilotsInLastGroup; i++)
+            {
+                sortedPilots.RemoveAt(sortedPilots.Count - 1);
+            }
+        }
+
+        
 
         public static void DoAssignmentToGroup(List<Pilot> group, List<int> numbersOfKarts, int numberRace)
         {
@@ -58,14 +77,15 @@ namespace Hekki
             if (copyNumbersOfKarts.Count > 0)
             {
                 for (int i = 0; i < group.Count; i++)
-                    group[i].AddNumberKart(0, numberRace);
+                    //group[i].AddNumberKart(0, numberRace);
+                    group[i].ClearUsedKartsByNumberRace(numberRace);
                 DoAssignmentToGroup(group, numbersOfKarts, numberRace);
             }
         }
 
         public static List<List<Pilot>> DivideByGroup(List<Pilot> pilots, List<int> numbersOfKarts)
         {
-            Shuffle(pilots);
+            
 
             List<List<Pilot>> groups = new List<List<Pilot>>();
             int countGroups = (int)Math.Ceiling((double)pilots.Count / numbersOfKarts.Count);
@@ -79,8 +99,50 @@ namespace Hekki
                     j = 0;
                 groups[j].Add(pilots[i]);
             }
-
+            CountPilotsInLastGroup = groups[groups.Count - 1].Count;
             return groups;
+        }
+
+        public static void SortPilotsByScore(List<Pilot> pilots)
+        {
+            List<Pilot> sorted = new List<Pilot>();
+
+            for (int i = 1; i < pilots.Count; i++)
+            {
+                var keyPilot = pilots[i];
+                var keyScore = pilots[i].Score;
+                int j = i - 1;
+                while (j >= 0 && pilots[j].Score < keyScore)
+                {
+                    pilots[j + 1] = pilots[j];
+                    j--;
+                }
+                pilots[j + 1] = keyPilot;
+            }
+            //pilots.Reverse();
+        }
+
+        public static List<Pilot> MakePilotsFromTotalBoard(int countPilots)
+        {
+            List<Pilot> pilots = new List<Pilot>();
+            //var data = ExcelWorker.ReadDataFromTotalBoard(countPilots);
+            //string[] pilotInfo;
+            //for (int i = 0; i < data.Count; i++)
+            //{
+            //    pilotInfo = data[i].Split('?');
+
+            //    List<int> numbersKarts = new List<int>();
+            //    for (int j = 0; j < pilotInfo[0].Length; j++)
+            //        numbersKarts.Add(pilotInfo[0][j] - '0');
+
+            //    int scores = Int32.Parse(pilotInfo[2]);
+            //    List<int> scores = new List<int>();
+            //    for (int j = 0; j < pilotInfo[0].Length; j++)
+            //        scores.Add(pilotInfo[2][j] - '0');
+
+            //    pilots.Add(new Pilot(numbersKarts, pilotInfo[1], scores));
+            //}
+            return pilots;
         }
 
         public static void Shuffle<T>(IList<T> list)

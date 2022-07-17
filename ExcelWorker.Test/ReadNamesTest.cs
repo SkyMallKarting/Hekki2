@@ -3,42 +3,39 @@ namespace ExcelWorker.Test
 {
     [TestFixture]
     public class ReadNamesTests
-    {
-        private static Application excel = Hekki.ExcelWorker.GetExcel();
+    {   
         private List<string> namesOriginal;
+        private List<string> testNames;
 
         [SetUp]
         public void Setup()
         {
-            namesOriginal = Hekki.ExcelWorker.ReadNames(excel);
-            var testNames = Hekki.ExcelWorker.ReadTestNamesFromTxt();
-            Hekki.ExcelWorker.WriteNamesInTotalBoard(excel, testNames);
+            namesOriginal = Hekki.ExcelWorker.ReadNamesInTotalBoard();
+            testNames = Hekki.ExcelWorker.ReadTestNamesFromTxt();
+            Hekki.ExcelWorker.WriteNamesInTotalBoard(testNames);
         }
 
-        [TearDown]
+        [OneTimeTearDown]
         public void Cleanup()
         {
-            Hekki.ExcelWorker.WriteNamesInTotalBoard(excel, namesOriginal);
+            Hekki.ExcelWorker.WriteNamesInTotalBoard(namesOriginal);
         }
 
-        [TestCase(new List<string>() { })]
-        public void ReturnedNamesIsExpected(List<string> s)
+        [Test]
+        public void ReturnedNamesIsExpected()
         {
-            
+            var names = Hekki.ExcelWorker.ReadNamesInTotalBoard();
 
-            var names = Hekki.ExcelWorker.ReadNames(excel);
-
-            for (int i = 0; i < s.Count; i++)
+            for (int i = 0; i < testNames.Count; i++)
             {
-                Assert.AreEqual(s[i], names[i]);
+                Assert.AreEqual(testNames[i], names[i]);
             }
         }
 
         [Test]
         public void NamesLengthMoreZero()
         {
-
-            var names = Hekki.ExcelWorker.ReadNames(excel);
+            var names = Hekki.ExcelWorker.ReadNamesInTotalBoard();
 
             foreach (var name in names)
             {

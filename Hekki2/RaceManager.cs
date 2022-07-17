@@ -5,43 +5,45 @@ namespace Hekki
 {
     internal class RaceManager
     {
-        private static Application excel = ExcelWorker.GetExcel();
         private static List<Pilot> pilots = new List<Pilot>();
         public static void DoThreeRaces(List<int> numbersKarts)
         {
             pilots.Clear();
-            List<string> pilotsNames = ExcelWorker.ReadNames(excel);
+            List<string> pilotsNames = ExcelWorker.ReadNamesInTotalBoard();
             foreach (var pilotName in pilotsNames)
                 pilots.Add(new Pilot(pilotName));
 
-            ExcelWorker.CleanData(excel, 4);
+            ExcelWorker.CleanData(4);
 
             for (int i = 0; i < 3; i++)
-                Race.Start(pilots, numbersKarts, i, excel);
+                Race.Start(pilots, numbersKarts, i);
 
-            ExcelWorker.WriteUsedKarts(excel, pilots);
+            ExcelWorker.WriteUsedKarts(pilots);
         }
 
         public static void DoOneRace(List<int> numbersKarts)
         {
             int numberRace = pilots.Count > 16 ? 3 : 4;
-            Race.Start(pilots, numbersKarts, numberRace, excel);
+            Race.Start(pilots, numbersKarts, numberRace);
+            ExcelWorker.WriteUsedKarts(pilots);
         }
 
         public static void Sort()
         {
-            Microsoft.Office.Interop.Excel.Range rangeToSort = excel.get_Range("C4", "J100");
+            
+            
+            Microsoft.Office.Interop.Excel.Range rangeToSort = ExcelWorker.GetRangeToSort();
             rangeToSort.Sort(rangeToSort.Columns[8], XlSortOrder.xlDescending);
         }
 
         public static void ReadScor()
         {
-            var dic = ExcelWorker.ReadScores(excel, pilots.Count);
+            var dic = ExcelWorker.ReadScoresInRace(pilots.Count);
             foreach (var pilot in pilots)
             {
                 pilot.AddScore(dic);
             }
-            ExcelWorker.WriteScoreInTotalBoard(excel, pilots);
+            ExcelWorker.WriteScoreInTotalBoard(pilots);
         }
     }
 }

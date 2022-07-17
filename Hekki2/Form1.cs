@@ -15,6 +15,7 @@ namespace Hekki2
         public Main()
         {
             InitializeComponent();
+            numbersOfKarts.Text = "1\n2\n3\n4\n5\n6\n7\n8";
         }
 
         private void button1_Click(object sender, EventArgs e)
