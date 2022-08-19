@@ -15,3 +15,5 @@ C:\Users\ProDesk\source\repos\Hekki2\Hekki2\bin\Debug\IronOcr.xml
 C:\Users\ProDesk\source\repos\Hekki2\Hekki2\bin\Debug\System.Drawing.Common.xml
 C:\Users\ProDesk\source\repos\Hekki2\Hekki2\obj\Debug\Hekki2.SprintReg.resources
 C:\Users\ProDesk\source\repos\Hekki2\Hekki2\obj\Debug\Hekki2.csproj.CopyComplete
+C:\Users\ProDesk\source\repos\Hekki2\Hekki2\obj\Debug\Hekki2.CherkasyReg.resources
+C:\Users\ProDesk\source\repos\Hekki2\Hekki2\obj\Debug\Hekki2.SchoolReg.resources

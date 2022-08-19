@@ -9,8 +9,10 @@ namespace Hekki
         private string _name;
         private List<int> _usedKarts = new List<int>();
         private List<int> _scores = new List<int>();
+        private List<string> _times = new List<string>();
         public int Score;
-        public int ScoresCount;
+        public int ScoresCount { get { return _scores.Count; } }
+        public int TimesCount { get { return _times.Count; } } 
         public string Name { get { return _name; } set { _name = value; } }
         public Pilot(string name)
         {
@@ -28,17 +30,20 @@ namespace Hekki
                 _scores.Add(scores[i]);
 
             Score = scores.Sum();
-            ScoresCount = scores.Count;
             
         }
 
         public void AddNumberKart(int numberKart, int numberRace)
         {
+            if (numberKart == 0)
+                throw new Exception();
             _usedKarts.Add(numberKart);
         }
 
         public static bool IsCanBeAdd(Pilot pilot, int number)
         {
+            if (number == 0)
+                throw new Exception();
             if (pilot._usedKarts.Contains(number))
                 return false;
             return true;
@@ -46,7 +51,15 @@ namespace Hekki
 
         public string GetNumberKartByRace(int numberRace)
         {
-            return _usedKarts[numberRace].ToString();
+            try
+            {
+                return _usedKarts[numberRace].ToString();
+            }
+            catch (Exception)
+            {
+                return _usedKarts[numberRace - 1].ToString();
+            }
+            
         }
 
         public string GetAllNumbersKarts()
@@ -66,7 +79,6 @@ namespace Hekki
             {
                 _scores.Add(score[_name][i]);
             }
-            ScoresCount = score[_name].Count;
             Score = _scores.Sum();
         }
 
@@ -88,5 +100,35 @@ namespace Hekki
             }
             
         }
+
+        public void AddEmptyScore()
+        {
+            _scores.Add(0);
+        }
+
+        public void AddEmptyNumberKart()
+        {
+            _usedKarts.Add(0);
+        }
+
+        public List<int> GetNumbersKarts()
+        {
+            return _usedKarts;
+        }
+
+        public void AddTime(Dictionary<string, List<string>> time)
+        {
+            _times.Clear();
+            for (int i = 0; i < time[_name].Count; i++)
+            {
+                _times.Add(time[_name][i]);
+            }
+        }
+
+        public string GetTimeByIndex(int index)
+        {
+            return _times[index];
+        }
+       
     }
 }

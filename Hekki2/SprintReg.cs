@@ -18,27 +18,27 @@ namespace Hekki2
         {
             InitializeComponent();
             numbersKarts = karts;
+            numbersOfKarts.Lines = numbersKarts.ConvertAll<string>(delegate(int i) { return i.ToString(); }).ToArray();
         }
 
         private void DoThreeRaces_Click(object sender, EventArgs e)
         {
-            
-            RaceManager.DoThreeRaces(numbersKarts);
+            Sprint.DoThreeRaces(numbersKarts);
         }
 
         private void DoSemiFinal_Click(object sender, EventArgs e)
         {
-            RaceManager.DoOneRace(numbersKarts);
+            Sprint.DoNextRace(numbersKarts);
         }
 
         private void DoFinal_Click(object sender, EventArgs e)
         {
-            RaceManager.DoOneRace(numbersKarts);
+            Sprint.DoNextRace(numbersKarts);
         }
 
         private void Sort_Click(object sender, EventArgs e)
         {
-            RaceManager.Sort();
+            Sprint.Sort();
         }
 
         private void SprintReg_Load(object sender, EventArgs e)
@@ -46,14 +46,22 @@ namespace Hekki2
 
         }
 
-        public static int GetMaxKarts()
-        {
-            return numbersKarts.Count;
-        }
-
         private void DoResult_Click(object sender, EventArgs e)
         {
-            RaceManager.ReadScor();
+            Sprint.ReadScor();
+            //Sprint.Sort();
+        }
+
+        private void clear_Click(object sender, EventArgs e)
+        {
+            ExcelWorker.CleanData(4);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            numbersKarts.Clear();
+            foreach (string i in numbersOfKarts.Lines)
+                numbersKarts.Add(Int32.Parse(i));
         }
     }
 }

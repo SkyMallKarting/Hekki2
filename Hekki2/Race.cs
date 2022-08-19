@@ -9,42 +9,68 @@ namespace Hekki
 {
     class Race
     {
-        public readonly int MaxOfKarts = SprintReg.GetMaxKarts();
         private static Random rng = new Random();
+        private static int _countPilotsInFirstGroup;
         private static int CountPilotsInLastGroup;
-        public static void Start(List<Pilot> pilots, List<int> numbers, int numberRace)
+        public static int CountPilotsInFirstGroup { get { return _countPilotsInFirstGroup; } }
+        //public static void Start(List<Pilot> pilots, List<int> numbers, int numberRace)
+        //{
+
+        //    List<List<Pilot>> groups = new List<List<Pilot>>();
+        //    if (numberRace == 4)
+        //    {
+        //        groups = DivideByGroup(pilots, numbers);
+        //        DoAssignmentToGroup(pilots, numbers, numberRace);
+        //    }
+        //    else if (numberRace == 3)
+        //    {
+        //        groups = DivideByGroup(pilots, numbers);
+        //        for (int i = 0; i < groups.Count; i++)
+        //            DoAssignmentToGroup(groups[i], numbers, numberRace);
+        //    }
+        //    else
+        //    {
+        //        Shuffle(pilots);
+        //        groups = DivideByGroup(pilots, numbers);
+        //        _countPilotsInFirstGroup = groups[0].Count;
+        //        for (int i = 0; i < groups.Count; i++)
+        //            DoAssignmentToGroup(groups[i], numbers, numberRace);
+
+        //    }
+        //    ExcelWorker.WriteNames(groups, numberRace, "Пилоты");
+        //}
+        
+        public static void StartHeatRace(List<Pilot> pilots, List<int> numbers, int numberRace)
         {
-
             List<List<Pilot>> groups = new List<List<Pilot>>();
-            if (numberRace == 4)
-            {
-                var sortedPilots = MakePilotsFromTotalBoard(pilots.Count);
-                RemoveWorstPilots(sortedPilots);
-                groups = DivideByGroup(sortedPilots, numbers);
-                DoAssignmentToGroup(groups[0], numbers, numberRace);
-            }
-            if (numberRace == 3)
-            {
-                //var sortedPilots = MakePilotsFromTotalBoard(pilots.Count);
-                pilots = MakePilotsFromTotalBoard(pilots.Count);
-                RemoveWorstPilots(pilots);
-                groups = DivideByGroup(pilots, numbers);
-                for (int i = 0; i < groups.Count; i++)
-                    DoAssignmentToGroup(groups[i], numbers, numberRace);
-
-            }
-            else
-            {
-                Shuffle(pilots);
-                groups = DivideByGroup(pilots, numbers);
-                for (int i = 0; i < groups.Count; i++)
-                    DoAssignmentToGroup(groups[i], numbers, numberRace);
-
-            }
+            Shuffle(pilots);
+            groups = DivideByGroup(pilots, numbers);
+            _countPilotsInFirstGroup = groups[0].Count;
+            for (int i = 0; i < groups.Count; i++)
+                DoAssignmentToGroup(groups[i], numbers, numberRace);
             ExcelWorker.WriteNames(groups, numberRace, "Пилоты");
         }
 
-        private static void RemoveWorstPilots(List<Pilot> sortedPilots)
+        public static void StartSemiRace(List<Pilot> pilots, List<int> numbers, int numberRace)
+        {
+            List<List<Pilot>> groups = new List<List<Pilot>>();
+            groups = DivideByGroup(pilots, numbers);
+            for (int i = 0; i < groups.Count; i++)
+                DoAssignmentToGroup(groups[i], numbers, numberRace);
+            ExcelWorker.WriteNames(groups, numberRace, "Пилоты");
+        }
+
+        public static void StartFinalRace(List<Pilot> pilots, List<int> numbers, int numberRace, int count = 1)
+        {
+            List<List<Pilot>> groups = new List<List<Pilot>>();
+            groups = SimpleDivideByGroup(pilots, numbers);
+            for (int i = 0; i < groups.Count; i++)
+                DoAssignmentToGroup(groups[i], numbers, numberRace);
+            
+            ExcelWorker.WriteNames(groups, numberRace, "Пилоты");
+        }
+
+        public static void RemoveWorstPilots(List<Pilot> sortedPilots)
         {
             for (int i = 0; i < CountPilotsInLastGroup; i++)
             {
@@ -52,10 +78,27 @@ namespace Hekki
             }
         }
 
-        
-
-        public static void DoAssignmentToGroup(List<Pilot> group, List<int> numbersOfKarts, int numberRace)
+        public static void AddInfoForLosers(List<Pilot> pilots, int repeatTimes)
         {
+            for (int j = 0, x = pilots.Count - CountPilotsInLastGroup; j < CountPilotsInLastGroup; j++)
+            {
+                for (int i = 0; i < repeatTimes; i++)
+                {
+                    pilots[x].AddEmptyScore();
+                    pilots[x].AddEmptyNumberKart();
+                }
+                x++;
+            }
+            
+        }
+
+        public static void DoAssignmentToGroup(List<Pilot> group, List<int> numbersOfKarts, int numberRace, int counerReapeat = 0)
+        {
+            if (counerReapeat == 50)
+            {
+                DoAssignmentByCombo(group, numbersOfKarts, numberRace);
+                return;
+            }
             List<int> copyNumbersOfKarts;
             CopyList(numbersOfKarts, copyNumbersOfKarts = new List<int>());
             while (copyNumbersOfKarts.Count > group.Count)
@@ -77,16 +120,24 @@ namespace Hekki
             if (copyNumbersOfKarts.Count > 0)
             {
                 for (int i = 0; i < group.Count; i++)
-                    //group[i].AddNumberKart(0, numberRace);
                     group[i].ClearUsedKartsByNumberRace(numberRace);
-                DoAssignmentToGroup(group, numbersOfKarts, numberRace);
+                DoAssignmentToGroup(group, numbersOfKarts, numberRace, counerReapeat + 1);
+            }
+        }
+
+        private static void DoAssignmentByCombo(List<Pilot> group, List<int> numbersOfKarts, int numberRace)
+        {
+            var combo = Combination.GetAvaibleCombo(numbersOfKarts, group);
+            if (combo.Count == 0)
+                return;
+            for (int i = 0; i < group.Count; i++)
+            {
+                group[i].AddNumberKart(combo[i], numberRace);
             }
         }
 
         public static List<List<Pilot>> DivideByGroup(List<Pilot> pilots, List<int> numbersOfKarts)
         {
-            
-
             List<List<Pilot>> groups = new List<List<Pilot>>();
             int countGroups = (int)Math.Ceiling((double)pilots.Count / numbersOfKarts.Count);
 
@@ -103,45 +154,50 @@ namespace Hekki
             return groups;
         }
 
-        public static void SortPilotsByScore(List<Pilot> pilots)
+        public static List<List<Pilot>> SimpleDivideByGroup(List<Pilot> pilots, List<int> numbersOfKarts)
         {
-            List<Pilot> sorted = new List<Pilot>();
+            var dividedGroups = DivideByGroup(pilots, numbersOfKarts);
+            List<List<Pilot>> groups = new List<List<Pilot>>();
+            int countGroups = (int)Math.Ceiling((double)pilots.Count / numbersOfKarts.Count);
 
-            for (int i = 1; i < pilots.Count; i++)
+            for (int i = 0; i < countGroups; i++)
+                groups.Add(new List<Pilot>());
+
+            int counter = 0;
+            for (int i = 0, j = 0; i < countGroups; i++)
             {
-                var keyPilot = pilots[i];
-                var keyScore = pilots[i].Score;
-                int j = i - 1;
-                while (j >= 0 && pilots[j].Score < keyScore)
+                while (counter < dividedGroups[i].Count)
                 {
-                    pilots[j + 1] = pilots[j];
-                    j--;
+                    groups[i].Add(pilots[j]);
+                    j++;
+                    counter++;
                 }
-                pilots[j + 1] = keyPilot;
+                counter = 0;
             }
-            //pilots.Reverse();
+            return groups;
         }
 
         public static List<Pilot> MakePilotsFromTotalBoard(int countPilots)
         {
             List<Pilot> pilots = new List<Pilot>();
-            //var data = ExcelWorker.ReadDataFromTotalBoard(countPilots);
-            //string[] pilotInfo;
-            //for (int i = 0; i < data.Count; i++)
-            //{
-            //    pilotInfo = data[i].Split('?');
+            var names = ExcelWorker.ReadNamesInTotalBoard();
+            var kartsMerged = ExcelWorker.ReadUsedKartsInTotalBoard();
+            var scoresMerged = ExcelWorker.ReadScoresInTotalBoard(countPilots);
 
-            //    List<int> numbersKarts = new List<int>();
-            //    for (int j = 0; j < pilotInfo[0].Length; j++)
-            //        numbersKarts.Add(pilotInfo[0][j] - '0');
-
-            //    int scores = Int32.Parse(pilotInfo[2]);
-            //    List<int> scores = new List<int>();
-            //    for (int j = 0; j < pilotInfo[0].Length; j++)
-            //        scores.Add(pilotInfo[2][j] - '0');
-
-            //    pilots.Add(new Pilot(numbersKarts, pilotInfo[1], scores));
-            //}
+            for (int i = 0; i < countPilots; i++)
+            {
+                List<int> karts = new List<int>();
+                List<int> scores = new List<int>();
+                for (int j = 0; j < kartsMerged[0].Count; j++)
+                {
+                    karts.Add(kartsMerged[i][j]);
+                }
+                for (int j = 0; j < scoresMerged[0].Count; j++)
+                {
+                    scores.Add(scoresMerged[i][j]);
+                }
+                pilots.Add(new Pilot(karts, names[i], scores));
+            }
             return pilots;
         }
 

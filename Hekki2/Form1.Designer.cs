@@ -33,6 +33,8 @@
             this.everyButton = new System.Windows.Forms.Button();
             this.numbersOfKarts = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.Cherkasy = new System.Windows.Forms.Button();
+            this.schoolButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // sprintButton
@@ -83,11 +85,33 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Номера картов, через enter";
             // 
+            // Cherkasy
+            // 
+            this.Cherkasy.Location = new System.Drawing.Point(76, 63);
+            this.Cherkasy.Name = "Cherkasy";
+            this.Cherkasy.Size = new System.Drawing.Size(179, 75);
+            this.Cherkasy.TabIndex = 5;
+            this.Cherkasy.Text = "Черкасы";
+            this.Cherkasy.UseVisualStyleBackColor = true;
+            this.Cherkasy.Click += new System.EventHandler(this.Cherkasy_Click);
+            // 
+            // schoolButton
+            // 
+            this.schoolButton.Location = new System.Drawing.Point(294, 63);
+            this.schoolButton.Name = "schoolButton";
+            this.schoolButton.Size = new System.Drawing.Size(179, 75);
+            this.schoolButton.TabIndex = 6;
+            this.schoolButton.Text = "School";
+            this.schoolButton.UseVisualStyleBackColor = true;
+            this.schoolButton.Click += new System.EventHandler(this.schoolButton_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.schoolButton);
+            this.Controls.Add(this.Cherkasy);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numbersOfKarts);
             this.Controls.Add(this.everyButton);
@@ -107,6 +131,8 @@
         private System.Windows.Forms.Button everyButton;
         private System.Windows.Forms.RichTextBox numbersOfKarts;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button Cherkasy;
+        private System.Windows.Forms.Button schoolButton;
     }
 }
 

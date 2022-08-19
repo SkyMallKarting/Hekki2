@@ -24,7 +24,7 @@ namespace Hekki2
             foreach (string i in numbersOfKarts.Lines)
                 karts.Add(Int32.Parse(i));
             SprintReg win2 = new SprintReg(karts);
-            win2.Show(); 
+            win2.Show();
         }
 
         private void every_btn_Click(object sender, EventArgs e)
@@ -40,6 +40,24 @@ namespace Hekki2
         private void numbersOfKarts_TextChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void Cherkasy_Click(object sender, EventArgs e)
+        {
+            List<int> karts = new List<int>();
+            foreach (string i in numbersOfKarts.Lines)
+                karts.Add(Int32.Parse(i));
+            CherkasyReg win3 = new CherkasyReg(karts);
+            win3.Show();
+        }
+
+        private void schoolButton_Click(object sender, EventArgs e)
+        {
+            List<int> karts = new List<int>();
+            foreach (string i in numbersOfKarts.Lines)
+                karts.Add(Int32.Parse(i));
+            SchoolReg win4 = new SchoolReg(karts);
+            win4.Show();
         }
     }
 }

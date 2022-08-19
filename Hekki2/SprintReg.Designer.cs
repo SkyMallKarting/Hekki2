@@ -33,13 +33,15 @@
             this.DoFinal = new System.Windows.Forms.Button();
             this.DoResult = new System.Windows.Forms.Button();
             this.Sort = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.RebuiltKarts = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.clear = new System.Windows.Forms.Button();
+            this.numbersOfKarts = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // DoThreeRaces
             // 
-            this.DoThreeRaces.Location = new System.Drawing.Point(58, 167);
+            this.DoThreeRaces.Location = new System.Drawing.Point(58, 91);
             this.DoThreeRaces.Name = "DoThreeRaces";
             this.DoThreeRaces.Size = new System.Drawing.Size(175, 80);
             this.DoThreeRaces.TabIndex = 0;
@@ -49,7 +51,7 @@
             // 
             // DoSemiFinal
             // 
-            this.DoSemiFinal.Location = new System.Drawing.Point(280, 167);
+            this.DoSemiFinal.Location = new System.Drawing.Point(276, 91);
             this.DoSemiFinal.Name = "DoSemiFinal";
             this.DoSemiFinal.Size = new System.Drawing.Size(175, 80);
             this.DoSemiFinal.TabIndex = 1;
@@ -59,7 +61,7 @@
             // 
             // DoFinal
             // 
-            this.DoFinal.Location = new System.Drawing.Point(499, 167);
+            this.DoFinal.Location = new System.Drawing.Point(499, 91);
             this.DoFinal.Name = "DoFinal";
             this.DoFinal.Size = new System.Drawing.Size(175, 80);
             this.DoFinal.TabIndex = 2;
@@ -69,7 +71,7 @@
             // 
             // DoResult
             // 
-            this.DoResult.Location = new System.Drawing.Point(58, 292);
+            this.DoResult.Location = new System.Drawing.Point(62, 193);
             this.DoResult.Name = "DoResult";
             this.DoResult.Size = new System.Drawing.Size(108, 80);
             this.DoResult.TabIndex = 3;
@@ -79,7 +81,7 @@
             // 
             // Sort
             // 
-            this.Sort.Location = new System.Drawing.Point(211, 298);
+            this.Sort.Location = new System.Drawing.Point(204, 193);
             this.Sort.Name = "Sort";
             this.Sort.Size = new System.Drawing.Size(132, 69);
             this.Sort.TabIndex = 4;
@@ -87,14 +89,15 @@
             this.Sort.UseVisualStyleBackColor = true;
             this.Sort.Click += new System.EventHandler(this.Sort_Click);
             // 
-            // button1
+            // RebuiltKarts
             // 
-            this.button1.Location = new System.Drawing.Point(382, 298);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 69);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Пересобрать пилотов";
-            this.button1.UseVisualStyleBackColor = true;
+            this.RebuiltKarts.Location = new System.Drawing.Point(204, 279);
+            this.RebuiltKarts.Name = "RebuiltKarts";
+            this.RebuiltKarts.Size = new System.Drawing.Size(132, 69);
+            this.RebuiltKarts.TabIndex = 5;
+            this.RebuiltKarts.Text = "Пересобрать карты";
+            this.RebuiltKarts.UseVisualStyleBackColor = true;
+            this.RebuiltKarts.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -105,13 +108,33 @@
             this.button2.Text = "Заменить карты у выделенного пилота";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // clear
+            // 
+            this.clear.Location = new System.Drawing.Point(58, 373);
+            this.clear.Name = "clear";
+            this.clear.Size = new System.Drawing.Size(112, 65);
+            this.clear.TabIndex = 7;
+            this.clear.Text = "Очистить";
+            this.clear.UseVisualStyleBackColor = true;
+            this.clear.Click += new System.EventHandler(this.clear_Click);
+            // 
+            // numbersOfKarts
+            // 
+            this.numbersOfKarts.Location = new System.Drawing.Point(342, 281);
+            this.numbersOfKarts.Name = "numbersOfKarts";
+            this.numbersOfKarts.Size = new System.Drawing.Size(100, 146);
+            this.numbersOfKarts.TabIndex = 8;
+            this.numbersOfKarts.Text = "";
+            // 
             // SprintReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.numbersOfKarts);
+            this.Controls.Add(this.clear);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.RebuiltKarts);
             this.Controls.Add(this.Sort);
             this.Controls.Add(this.DoResult);
             this.Controls.Add(this.DoFinal);
@@ -131,7 +154,9 @@
         private System.Windows.Forms.Button DoFinal;
         private System.Windows.Forms.Button DoResult;
         private System.Windows.Forms.Button Sort;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button RebuiltKarts;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button clear;
+        private System.Windows.Forms.RichTextBox numbersOfKarts;
     }
 }
