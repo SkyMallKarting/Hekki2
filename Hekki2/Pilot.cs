@@ -11,6 +11,7 @@ namespace Hekki
         private List<int> _scores = new List<int>();
         private List<string> _times = new List<string>();
         public int Score;
+        public int KartsCount { get { return _usedKarts.Count; } }
         public int ScoresCount { get { return _scores.Count; } }
         public int TimesCount { get { return _times.Count; } } 
         public string Name { get { return _name; } set { _name = value; } }

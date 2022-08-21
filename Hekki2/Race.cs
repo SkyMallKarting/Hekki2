@@ -13,32 +13,6 @@ namespace Hekki
         private static int _countPilotsInFirstGroup;
         private static int CountPilotsInLastGroup;
         public static int CountPilotsInFirstGroup { get { return _countPilotsInFirstGroup; } }
-        //public static void Start(List<Pilot> pilots, List<int> numbers, int numberRace)
-        //{
-
-        //    List<List<Pilot>> groups = new List<List<Pilot>>();
-        //    if (numberRace == 4)
-        //    {
-        //        groups = DivideByGroup(pilots, numbers);
-        //        DoAssignmentToGroup(pilots, numbers, numberRace);
-        //    }
-        //    else if (numberRace == 3)
-        //    {
-        //        groups = DivideByGroup(pilots, numbers);
-        //        for (int i = 0; i < groups.Count; i++)
-        //            DoAssignmentToGroup(groups[i], numbers, numberRace);
-        //    }
-        //    else
-        //    {
-        //        Shuffle(pilots);
-        //        groups = DivideByGroup(pilots, numbers);
-        //        _countPilotsInFirstGroup = groups[0].Count;
-        //        for (int i = 0; i < groups.Count; i++)
-        //            DoAssignmentToGroup(groups[i], numbers, numberRace);
-
-        //    }
-        //    ExcelWorker.WriteNames(groups, numberRace, "Пилоты");
-        //}
         
         public static void StartHeatRace(List<Pilot> pilots, List<int> numbers, int numberRace)
         {
@@ -55,6 +29,7 @@ namespace Hekki
         {
             List<List<Pilot>> groups = new List<List<Pilot>>();
             groups = DivideByGroup(pilots, numbers);
+            _countPilotsInFirstGroup = groups[0].Count;
             for (int i = 0; i < groups.Count; i++)
                 DoAssignmentToGroup(groups[i], numbers, numberRace);
             ExcelWorker.WriteNames(groups, numberRace, "Пилоты");
@@ -64,6 +39,7 @@ namespace Hekki
         {
             List<List<Pilot>> groups = new List<List<Pilot>>();
             groups = SimpleDivideByGroup(pilots, numbers);
+            _countPilotsInFirstGroup = groups[0].Count;
             for (int i = 0; i < groups.Count; i++)
                 DoAssignmentToGroup(groups[i], numbers, numberRace);
             
@@ -90,6 +66,17 @@ namespace Hekki
                 x++;
             }
             
+        }
+
+        public static void ReBuildCountPilotsInFirstGroup(List<int> numbers)
+        {
+            List<string> pilotsNames = ExcelWorker.ReadNamesInTotalBoard();
+            List<Pilot> pilots = new List<Pilot>();
+            foreach (var pilotName in pilotsNames)
+                pilots.Add(new Pilot(pilotName));
+            List<List<Pilot>> groups = new List<List<Pilot>>();
+            groups = DivideByGroup(pilots, numbers);
+            _countPilotsInFirstGroup = groups[0].Count;
         }
 
         public static void DoAssignmentToGroup(List<Pilot> group, List<int> numbersOfKarts, int numberRace, int counerReapeat = 0)
@@ -150,7 +137,7 @@ namespace Hekki
                     j = 0;
                 groups[j].Add(pilots[i]);
             }
-            CountPilotsInLastGroup = groups[groups.Count - 1].Count;
+            //CountPilotsInLastGroup = groups[groups.Count - 1].Count;
             return groups;
         }
 
@@ -188,14 +175,21 @@ namespace Hekki
             {
                 List<int> karts = new List<int>();
                 List<int> scores = new List<int>();
-                for (int j = 0; j < kartsMerged[0].Count; j++)
+                if (kartsMerged.Count != 0)
                 {
-                    karts.Add(kartsMerged[i][j]);
+                    for (int j = 0; j < kartsMerged[i].Count; j++)
+                    {
+                        karts.Add(kartsMerged[i][j]);
+                    }
                 }
-                for (int j = 0; j < scoresMerged[0].Count; j++)
+                if (scoresMerged.Count != 0 && scoresMerged[i].Sum() != 0)
                 {
-                    scores.Add(scoresMerged[i][j]);
+                    for (int j = 0; j < scoresMerged[i].Count; j++)
+                    {
+                        scores.Add(scoresMerged[i][j]);
+                    }
                 }
+                
                 pilots.Add(new Pilot(karts, names[i], scores));
             }
             return pilots;

@@ -29,10 +29,26 @@ namespace Hekki2
 
             ExcelWorker.WriteUsedKarts(pilots);
         }
-
-        public static void DoNextRace(List<int> numbersKarts)
+        public static void DoOneRace(List<int> numbersKarts)
         {
-            int numberRace = pilots.Count >= 17 ? 3 : 4;
+            pilots.Clear();
+            Race.ReBuildCountPilotsInFirstGroup(numbersKarts);
+            List<string> pilotsNames = ExcelWorker.ReadNamesInTotalBoard();
+            foreach (var pilotName in pilotsNames)
+                pilots.Add(new Pilot(pilotName));
+            pilots = Race.MakePilotsFromTotalBoard(pilots.Count);
+            totalPilots = pilots.Count;
+            TotalRacesCount = totalPilots > 16 ? 3 : 4;
+
+            Race.StartHeatRace(pilots, numbersKarts, pilots[0].KartsCount);
+
+            ExcelWorker.WriteUsedKarts(pilots);
+        }
+        
+        public static void DoNextRace(List<int> numbersKarts, int numberRace)
+        {
+            Race.ReBuildCountPilotsInFirstGroup(numbersKarts);
+            //int numberRace = pilots.Count >= 17 ? 3 : 4;
             if (numberRace == 3)
             {
                 pilots = Race.MakePilotsFromTotalBoard(Race.CountPilotsInFirstGroup * 2);
@@ -48,7 +64,7 @@ namespace Hekki2
 
         public static void Sort()
         {
-            Microsoft.Office.Interop.Excel.Range rangeToSort = ExcelWorker.GetRangeToSort();
+            Range rangeToSort = ExcelWorker.GetRangeToSort();
             rangeToSort.Sort(rangeToSort.Columns[8], XlSortOrder.xlDescending);
         }
 
@@ -60,6 +76,13 @@ namespace Hekki2
                 pilot.AddScore(dic);
             }
             ExcelWorker.WriteScoreInTotalBoard(pilots);
+        }
+
+        public static void ReBuildPilots()
+        {
+            List<string> pilotsNames = ExcelWorker.ReadNamesInTotalBoard();
+            pilots = Race.MakePilotsFromTotalBoard(pilotsNames.Count);
+            totalPilots = pilots.Count;
         }
     }
 }

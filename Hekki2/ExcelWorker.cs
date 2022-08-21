@@ -56,13 +56,11 @@ namespace Hekki
 
             int i = 2;
             int q = 0;
-            while (keyCells[0].Cells[1].Value != null)
+            
+            while (keyCells[0].Cells[i].Value != null)
             {
                 karts.Add(new List<int>());
-                if (keyCells[0].Cells[i, 1].Value == null)
-                {
-                    return karts;
-                }
+                
                 string numbers = keyCells[0].Cells[i, 1].Value.ToString();
                 for (int j = 0, k = 0; j < numbers.Length; j++, k++)
                 {
@@ -91,7 +89,7 @@ namespace Hekki
                 {
                     int number;
                     if (keyCells[q].Cells[1 + k].Value == null)
-                        number = 0;
+                        continue;
                     else
                         number = (int)keyCells[q].Cells[1 + k].Value;
                     score[i].Add(number);
@@ -369,6 +367,32 @@ namespace Hekki
             for (int i = 2; i < 100; i++)
             {
                 keyCell[i] = "";
+            }
+        }
+
+        public static void DeleteLastUsedKartsInTotalBoard()
+        {
+            var numberKarts = ReadUsedKartsInTotalBoard();
+            foreach (var kart in numberKarts)
+            {
+                kart.RemoveAt(kart.Count - 1);
+            }
+            WriteUsedKartsInTotalBoard(numberKarts);
+        }
+
+        public static void WriteUsedKartsInTotalBoard(List<List<int>> numberKarts)
+        {
+            var keyCells = FindKeyCellByValue("Номера", excel.Range["A1", "K100"]);
+            int k = 2;
+            for (int i = 0; i < numberKarts.Count; i++)
+            {
+                string numbers = "";
+                for (int j = 0; j < numberKarts[i].Count; j++)
+                {
+                    numbers += numberKarts[i][j].ToString();
+                }
+                keyCells[0][k].Value = numbers;
+                k++;
             }
         }
     }

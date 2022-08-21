@@ -38,13 +38,13 @@
             this.DoHeat2 = new System.Windows.Forms.Button();
             this.Sort = new System.Windows.Forms.Button();
             this.SortQual = new System.Windows.Forms.Button();
-            this.SortQual2 = new System.Windows.Forms.Button();
             this.WriteQual = new System.Windows.Forms.Button();
+            this.DoFinal = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // numbersOfKarts
             // 
-            this.numbersOfKarts.Location = new System.Drawing.Point(377, 218);
+            this.numbersOfKarts.Location = new System.Drawing.Point(24, 282);
             this.numbersOfKarts.Name = "numbersOfKarts";
             this.numbersOfKarts.Size = new System.Drawing.Size(100, 146);
             this.numbersOfKarts.TabIndex = 9;
@@ -52,7 +52,7 @@
             // 
             // RebuildKarts
             // 
-            this.RebuildKarts.Location = new System.Drawing.Point(239, 218);
+            this.RebuildKarts.Location = new System.Drawing.Point(24, 207);
             this.RebuildKarts.Name = "RebuildKarts";
             this.RebuildKarts.Size = new System.Drawing.Size(132, 69);
             this.RebuildKarts.TabIndex = 10;
@@ -72,7 +72,7 @@
             // 
             // DoResult
             // 
-            this.DoResult.Location = new System.Drawing.Point(46, 201);
+            this.DoResult.Location = new System.Drawing.Point(503, 276);
             this.DoResult.Name = "DoResult";
             this.DoResult.Size = new System.Drawing.Size(108, 80);
             this.DoResult.TabIndex = 12;
@@ -82,7 +82,7 @@
             // 
             // clear
             // 
-            this.clear.Location = new System.Drawing.Point(46, 373);
+            this.clear.Location = new System.Drawing.Point(205, 373);
             this.clear.Name = "clear";
             this.clear.Size = new System.Drawing.Size(112, 65);
             this.clear.TabIndex = 13;
@@ -122,48 +122,51 @@
             // 
             // Sort
             // 
-            this.Sort.Location = new System.Drawing.Point(514, 218);
+            this.Sort.Location = new System.Drawing.Point(647, 282);
             this.Sort.Name = "Sort";
             this.Sort.Size = new System.Drawing.Size(132, 69);
             this.Sort.TabIndex = 17;
             this.Sort.Text = "Сортировать общую таблицу по балам";
             this.Sort.UseVisualStyleBackColor = true;
+            this.Sort.Click += new System.EventHandler(this.Sort_Click);
             // 
             // SortQual
             // 
-            this.SortQual.Location = new System.Drawing.Point(514, 317);
+            this.SortQual.Location = new System.Drawing.Point(647, 369);
             this.SortQual.Name = "SortQual";
             this.SortQual.Size = new System.Drawing.Size(132, 69);
             this.SortQual.TabIndex = 18;
-            this.SortQual.Text = "Сортировать общую таблицу по квале 1";
+            this.SortQual.Text = "Сортировать время";
             this.SortQual.UseVisualStyleBackColor = true;
-            // 
-            // SortQual2
-            // 
-            this.SortQual2.Location = new System.Drawing.Point(656, 317);
-            this.SortQual2.Name = "SortQual2";
-            this.SortQual2.Size = new System.Drawing.Size(132, 69);
-            this.SortQual2.TabIndex = 19;
-            this.SortQual2.Text = "Сортировать общую таблицу по квале 2";
-            this.SortQual2.UseVisualStyleBackColor = true;
+            this.SortQual.Click += new System.EventHandler(this.SortQual_Click);
             // 
             // WriteQual
             // 
-            this.WriteQual.Location = new System.Drawing.Point(46, 287);
+            this.WriteQual.Location = new System.Drawing.Point(503, 363);
             this.WriteQual.Name = "WriteQual";
             this.WriteQual.Size = new System.Drawing.Size(108, 80);
             this.WriteQual.TabIndex = 20;
-            this.WriteQual.Text = "Перенести квалы в общую таблицу";
+            this.WriteQual.Text = "Перенести время в общую таблицу";
             this.WriteQual.UseVisualStyleBackColor = true;
             this.WriteQual.Click += new System.EventHandler(this.WriteQual_Click);
+            // 
+            // DoFinal
+            // 
+            this.DoFinal.Location = new System.Drawing.Point(613, 158);
+            this.DoFinal.Name = "DoFinal";
+            this.DoFinal.Size = new System.Drawing.Size(175, 80);
+            this.DoFinal.TabIndex = 21;
+            this.DoFinal.Text = "Распределить Финал";
+            this.DoFinal.UseVisualStyleBackColor = true;
+            this.DoFinal.Click += new System.EventHandler(this.DoFinal_Click);
             // 
             // CherkasyReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.DoFinal);
             this.Controls.Add(this.WriteQual);
-            this.Controls.Add(this.SortQual2);
             this.Controls.Add(this.SortQual);
             this.Controls.Add(this.Sort);
             this.Controls.Add(this.DoHeat2);
@@ -193,7 +196,7 @@
         private System.Windows.Forms.Button DoHeat2;
         private System.Windows.Forms.Button Sort;
         private System.Windows.Forms.Button SortQual;
-        private System.Windows.Forms.Button SortQual2;
         private System.Windows.Forms.Button WriteQual;
+        private System.Windows.Forms.Button DoFinal;
     }
 }

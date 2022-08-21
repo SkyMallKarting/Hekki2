@@ -28,12 +28,12 @@ namespace Hekki2
 
         private void DoSemiFinal_Click(object sender, EventArgs e)
         {
-            Sprint.DoNextRace(numbersKarts);
+            Sprint.DoNextRace(numbersKarts, 3);
         }
 
         private void DoFinal_Click(object sender, EventArgs e)
         {
-            Sprint.DoNextRace(numbersKarts);
+            Sprint.DoNextRace(numbersKarts, 4);
         }
 
         private void Sort_Click(object sender, EventArgs e)
@@ -62,6 +62,22 @@ namespace Hekki2
             numbersKarts.Clear();
             foreach (string i in numbersOfKarts.Lines)
                 numbersKarts.Add(Int32.Parse(i));
+        }
+
+        private void DoOneRace_Click(object sender, EventArgs e)
+        {
+            Sprint.DoOneRace(numbersKarts);
+        }
+
+        private void RebuildPilots_Click(object sender, EventArgs e)
+        {
+            Sprint.ReBuildPilots();
+        }
+
+        private void DeleteLastUsedKart_Click(object sender, EventArgs e)
+        {
+            ExcelWorker.DeleteLastUsedKartsInTotalBoard();
+            Sprint.ReBuildPilots();
         }
     }
 }

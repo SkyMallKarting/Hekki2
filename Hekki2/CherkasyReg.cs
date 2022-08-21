@@ -1,4 +1,5 @@
 ﻿using Hekki;
+using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -63,7 +64,23 @@ namespace Hekki2
 
         private void RebuildKarts_Click(object sender, EventArgs e)
         {
+            Cherkasy.ReBuildPilots();
+        }
 
+        private void SortQual_Click(object sender, EventArgs e)
+        {
+            Cherkasy.SortTimes();
+        }
+
+        private void Sort_Click(object sender, EventArgs e)
+        {
+            Range rangeToSort = ExcelWorker.GetRangeToSort();
+            rangeToSort.Sort(rangeToSort.Columns[8], XlSortOrder.xlDescending);
+        }
+
+        private void DoFinal_Click(object sender, EventArgs e)
+        {
+            Cherkasy.DoFinal(numbersKarts);
         }
     }
 }

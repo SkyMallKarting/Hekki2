@@ -37,6 +37,9 @@
             this.button2 = new System.Windows.Forms.Button();
             this.clear = new System.Windows.Forms.Button();
             this.numbersOfKarts = new System.Windows.Forms.RichTextBox();
+            this.DoOneRace = new System.Windows.Forms.Button();
+            this.RebuildPilots = new System.Windows.Forms.Button();
+            this.DeleteLastUsedKart = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // DoThreeRaces
@@ -101,12 +104,13 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(542, 298);
+            this.button2.Location = new System.Drawing.Point(656, 358);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(132, 69);
             this.button2.TabIndex = 6;
             this.button2.Text = "Заменить карты у выделенного пилота";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             // 
             // clear
             // 
@@ -126,11 +130,44 @@
             this.numbersOfKarts.TabIndex = 8;
             this.numbersOfKarts.Text = "";
             // 
+            // DoOneRace
+            // 
+            this.DoOneRace.Location = new System.Drawing.Point(58, 5);
+            this.DoOneRace.Name = "DoOneRace";
+            this.DoOneRace.Size = new System.Drawing.Size(175, 80);
+            this.DoOneRace.TabIndex = 9;
+            this.DoOneRace.Text = "Распределить 1 хит";
+            this.DoOneRace.UseVisualStyleBackColor = true;
+            this.DoOneRace.Click += new System.EventHandler(this.DoOneRace_Click);
+            // 
+            // RebuildPilots
+            // 
+            this.RebuildPilots.Location = new System.Drawing.Point(276, 11);
+            this.RebuildPilots.Name = "RebuildPilots";
+            this.RebuildPilots.Size = new System.Drawing.Size(132, 69);
+            this.RebuildPilots.TabIndex = 10;
+            this.RebuildPilots.Text = "Пересобрать пилотов";
+            this.RebuildPilots.UseVisualStyleBackColor = true;
+            this.RebuildPilots.Click += new System.EventHandler(this.RebuildPilots_Click);
+            // 
+            // DeleteLastUsedKart
+            // 
+            this.DeleteLastUsedKart.Location = new System.Drawing.Point(499, 358);
+            this.DeleteLastUsedKart.Name = "DeleteLastUsedKart";
+            this.DeleteLastUsedKart.Size = new System.Drawing.Size(132, 69);
+            this.DeleteLastUsedKart.TabIndex = 11;
+            this.DeleteLastUsedKart.Text = "Удалить карты последнего хита";
+            this.DeleteLastUsedKart.UseVisualStyleBackColor = true;
+            this.DeleteLastUsedKart.Click += new System.EventHandler(this.DeleteLastUsedKart_Click);
+            // 
             // SprintReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.DeleteLastUsedKart);
+            this.Controls.Add(this.RebuildPilots);
+            this.Controls.Add(this.DoOneRace);
             this.Controls.Add(this.numbersOfKarts);
             this.Controls.Add(this.clear);
             this.Controls.Add(this.button2);
@@ -158,5 +195,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button clear;
         private System.Windows.Forms.RichTextBox numbersOfKarts;
+        private System.Windows.Forms.Button DoOneRace;
+        private System.Windows.Forms.Button RebuildPilots;
+        private System.Windows.Forms.Button DeleteLastUsedKart;
     }
 }
