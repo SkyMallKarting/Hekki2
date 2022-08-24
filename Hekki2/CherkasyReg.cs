@@ -64,7 +64,9 @@ namespace Hekki2
 
         private void RebuildKarts_Click(object sender, EventArgs e)
         {
-            Cherkasy.ReBuildPilots();
+            numbersKarts.Clear();
+            foreach (string i in numbersOfKarts.Lines)
+                numbersKarts.Add(Int32.Parse(i));
         }
 
         private void SortQual_Click(object sender, EventArgs e)
@@ -81,6 +83,11 @@ namespace Hekki2
         private void DoFinal_Click(object sender, EventArgs e)
         {
             Cherkasy.DoFinal(numbersKarts);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Cherkasy.ReBuildPilots();
         }
     }
 }
