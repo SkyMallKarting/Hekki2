@@ -38,3 +38,7 @@ C:\Users\an00t\Source\Repos\Hekki2\Hekki2\bin\Debug\System.Drawing.Common.xml
 C:\Users\an00t\Source\Repos\Hekki2\Hekki2\obj\Debug\Hekki2.csproj.CopyComplete
 C:\Users\an00t\Source\Repos\Hekki2\Hekki2\obj\Debug\Hekki2.EveryReg.resources
 C:\Users\an00t\Source\Repos\Hekki2\Hekki2\obj\Debug\Hekki2.JuniorReg.resources
+C:\Users\an00t\source\repos\Hekki2\Hekki2\bin\Debug\Hekki2.exe.manifest
+C:\Users\an00t\source\repos\Hekki2\Hekki2\bin\Debug\Hekki2.application
+C:\Users\an00t\source\repos\Hekki2\Hekki2\obj\Debug\Hekki2.exe.manifest
+C:\Users\an00t\source\repos\Hekki2\Hekki2\obj\Debug\Hekki2.application

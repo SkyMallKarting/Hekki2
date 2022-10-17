@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="Hekki2.exe" version="1.0.0.0" publicKeyToken="23c7000834ac7102" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="Hekki2" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="Hekki2.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          Параметры манифеста UAC
+          Если нужно изменить уровень контроля учетных записей Windows, замените 
+          узел requestedExecutionLevel одним из следующих значений.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+        Если нужно использовать виртуализацию файлов и реестра для обратной
+             совместимости, удалите узел requestedExecutionLevel.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Hekki2.exe" size="73184">
+      <assemblyIdentity name="Hekki2" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>W/VHvRxffHGac/HN4PvZsPIwspfLLJff1rrgiLTP7c8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IronOcr.dll" size="87470592">
+      <assemblyIdentity name="IronOcr" version="2022.3.0.0" publicKeyToken="C2CBCEA5EA3F6D8D" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>3+/Px2o5XG2B0NDgHVBYd+mnyTh8IcyvKP3x4gMdSSg=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Drawing.Common.dll" size="53360">
+      <assemblyIdentity name="System.Drawing.Common" version="6.0.0.0" publicKeyToken="CC7B13FFCD2DDD51" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>yhg4OiBwUYrow+lsvRcF2ig8itpN3zliF9K8t9zQMQM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="Hekki2.exe.config" size="189">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>R+Wg8QGvQVHX8T0ta/qbhH1bXkqY0fRnS3wBV3J0bN8=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=DESKTOP-O77FRTC\an00t" issuerKeyHash="cd6044e9781625ba3f51a21e7946c59b61c48196" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>TWUTPdlFM41riKWi3Kh2aY2D3clEG8CROhHcr8dlc8o=</DigestValue></Reference></SignedInfo><SignatureValue>E8Bk9qylz6oVud7++/7wrGZnAl9VIEEQERCGYs+90oREJHXODDUlyDK0QvXC1kDB6R4ghYpPcbh5I4kJczB7ABFVXrHqqOjoroFNA8YoHhppD4pgY9qrsGKncIr7GhcXCEeAb6sCMXXrNC7jlALyfXto+2XOkIEH9GVMUkd+Z6c=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>yznSpdFGQr/rQ2Q61OdaZtNNVvkXM95t+yX+NZlZW35l5f9lHy+h9OyXAystNsdDnjynZHmMDo0HWoa1tMea9h39ePKWbf1h+lWWpDCFurOQiOWjfDtW7R7wT9bE/YNxQQz9suz7KKe0ZkzgyeeGFXwXM2iYFHDWh2EVSZ+MRLk=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="ca7365c7afdc113a91c01b44c9dd838d6976a8dca2a5886b8d3345d93d13654d" Description="" Url=""><as:assemblyIdentity name="Hekki2.exe" version="1.0.0.0" publicKeyToken="23c7000834ac7102" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DESKTOP-O77FRTC\an00t</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>hx2NfCtkytgwENvrnF7qi8LNFXobiHH+XQuURTJEHj8=</DigestValue></Reference></SignedInfo><SignatureValue>V6yN6Vx3ZeOHT68nEO40oIAXsYgiSGa0Q1FICemtrNHwUkwJkiyaA3Y3aL3w1r5hJIFeBZAP1luYnEUA5tVHX4KhFmfdxQ4GBSMArbplTdEkgKqVdnI4L1p0JhxLwuqHJonVaeiKBinBJzHPX1TAISRUfejjgmtHfXUeRveqFLk=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>yznSpdFGQr/rQ2Q61OdaZtNNVvkXM95t+yX+NZlZW35l5f9lHy+h9OyXAystNsdDnjynZHmMDo0HWoa1tMea9h39ePKWbf1h+lWWpDCFurOQiOWjfDtW7R7wT9bE/YNxQQz9suz7KKe0ZkzgyeeGFXwXM2iYFHDWh2EVSZ+MRLk=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB7TCCAVagAwIBAgIQQD6cYBBDjYhDvYtKLoVdtzANBgkqhkiG9w0BAQsFADA1MTMwMQYDVQQDHioARABFAFMASwBUAE8AUAAtAE8ANwA3AEYAUgBUAEMAXABhAG4AMAAwAHQwHhcNMjIxMDE3MjEyNzIwWhcNMjMxMDE4MDMyNzIwWjA1MTMwMQYDVQQDHioARABFAFMASwBUAE8AUAAtAE8ANwA3AEYAUgBUAEMAXABhAG4AMAAwAHQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAMs50qXRRkK/60NkOtTnWmbTTVb5FzPebfsl/jWZWVt+ZeX/ZR8vofTslwMrLTbHQ548p2R5jA6NB1qGtbTHmvYd/Xjylm39YfpVlqQwhbqzkIjlo3w7Vu0e8E/WxP2DcUEM/bLs+yintGZM4MnnhhV8FzNomBRw1odhFUmfjES5AgMBAAEwDQYJKoZIhvcNAQELBQADgYEAdJZjW6MQWgoJ5XwpMe678OhQq2OpmMPkmRxRPD3vOwLz187Qj6GB9+3MKbdetTG/vCT/mSMl7BzAlvyJGub6xy5/aYbTRZ+eq9qPCY+3FUkc+bJDtpHK0/Or+Co55JaDPaeCtEyZzSxwaBMUIBOPdNmEI6Q/Tw2l21b6DbC/wBo=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
