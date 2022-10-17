@@ -36,7 +36,6 @@ namespace Hekki2
                 numberRace = 0;
             }
 
-
             pilots.Clear();
             List<string> pilotsNames = ExcelWorker.ReadNamesInTotalBoard();
             foreach (var pilotName in pilotsNames)
@@ -50,11 +49,7 @@ namespace Hekki2
 
         public static void ReadTime()
         {
-            var dic = ExcelWorker.ReadTimeInRace(totalPilots);
-            foreach (var pilot in pilots)
-            {
-                pilot.AddTime(dic);
-            }
+            pilots = ExcelWorker.ReadTimeInRace(pilots);
             ExcelWorker.WriteTimeInTotalBoard(pilots);
         }
 
@@ -67,7 +62,7 @@ namespace Hekki2
 
         public static void SortTimes()
         {
-            var keyCells = ExcelWorker.FindKeyCellByValue("Время", null);
+            var keyCells = ExcelWorker.FindKeyCellByValue("ВРЕМЯ", null);
             keyCells.AddRange(ExcelWorker.FindKeyCellByValue("Best Lap", null));
             
             for (int i = 0; i < keyCells.Count; i++)

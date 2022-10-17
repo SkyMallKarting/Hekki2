@@ -57,27 +57,19 @@ namespace Hekki2
 
         public static void ReadTime()
         {
-            var dic = ExcelWorker.ReadTimeInRace(totalPilots);
-            foreach (var pilot in pilots)
-            {
-                pilot.AddTime(dic);
-            }
+            pilots = ExcelWorker.ReadTimeInRace(pilots);
             ExcelWorker.WriteTimeInTotalBoard(pilots);
         }
 
         public static void ReadScor()
         {
-            var dic = ExcelWorker.ReadScoresInRace(totalPilots);
-            foreach (var pilot in pilots)
-            {
-                pilot.AddScore(dic);
-            }
+            pilots = ExcelWorker.ReadScoresInRace(pilots);
             ExcelWorker.WriteScoreInTotalBoard(pilots);
         }
 
         public static void SortTimes()
         {
-            var keyCells = ExcelWorker.FindKeyCellByValue("Время", null);
+            var keyCells = ExcelWorker.FindKeyCellByValue("ВРЕМЯ", null);
             keyCells.AddRange(ExcelWorker.FindKeyCellByValue("Best Lap", null));
 
             for (int i = 0; i < keyCells.Count; i++)
@@ -89,10 +81,30 @@ namespace Hekki2
                 var lastCellRow = keyCells[i].Row + 32;
                 var lastCellCol = keyCells[i].Column;
 
-                Range rangeToSort = ExcelWorker.excel.Range[ExcelWorker.excel.Cells[firstCellRow + 1, firstCellCol + 1], keyCells[i][32]];
+                Range rangeToSort = ExcelWorker.excel.Range[ExcelWorker.excel.Cells[firstCellRow + 1, firstCellCol + 1], keyCells[i][50]];
 
 
                 rangeToSort.Sort(rangeToSort.Columns[(j - 1) * -1], XlSortOrder.xlAscending);
+            }
+        }
+
+        public static void SortScores()
+        {
+            var keyCells = ExcelWorker.FindKeyCellByValue("ВСЕГО", null);
+
+            for (int i = 0; i < keyCells.Count; i++)
+            {
+                int j = 0;
+                while (keyCells[i][1, j--].Value != null) { }
+                var firstCellRow = keyCells[i].Row;
+                var firstCellCol = keyCells[i][1, j].Column;
+                var lastCellRow = keyCells[i].Row + 32;
+                var lastCellCol = keyCells[i].Column;
+
+                Range rangeToSort = ExcelWorker.excel.Range[ExcelWorker.excel.Cells[firstCellRow + 1, firstCellCol + 1], keyCells[i][50]];
+
+
+                rangeToSort.Sort(rangeToSort.Columns[(j - 1) * -1], XlSortOrder.xlDescending);
             }
         }
 

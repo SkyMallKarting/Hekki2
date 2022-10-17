@@ -34,7 +34,6 @@
             this.DoResult = new System.Windows.Forms.Button();
             this.Sort = new System.Windows.Forms.Button();
             this.RebuiltKarts = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.clear = new System.Windows.Forms.Button();
             this.numbersOfKarts = new System.Windows.Forms.RichTextBox();
             this.DoOneRace = new System.Windows.Forms.Button();
@@ -44,9 +43,10 @@
             // 
             // DoThreeRaces
             // 
-            this.DoThreeRaces.Location = new System.Drawing.Point(58, 91);
+            this.DoThreeRaces.Location = new System.Drawing.Point(77, 112);
+            this.DoThreeRaces.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DoThreeRaces.Name = "DoThreeRaces";
-            this.DoThreeRaces.Size = new System.Drawing.Size(175, 80);
+            this.DoThreeRaces.Size = new System.Drawing.Size(233, 98);
             this.DoThreeRaces.TabIndex = 0;
             this.DoThreeRaces.Text = "Распределить 3 хита";
             this.DoThreeRaces.UseVisualStyleBackColor = true;
@@ -54,9 +54,10 @@
             // 
             // DoSemiFinal
             // 
-            this.DoSemiFinal.Location = new System.Drawing.Point(276, 91);
+            this.DoSemiFinal.Location = new System.Drawing.Point(368, 112);
+            this.DoSemiFinal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DoSemiFinal.Name = "DoSemiFinal";
-            this.DoSemiFinal.Size = new System.Drawing.Size(175, 80);
+            this.DoSemiFinal.Size = new System.Drawing.Size(233, 98);
             this.DoSemiFinal.TabIndex = 1;
             this.DoSemiFinal.Text = "Распределить полуфинал";
             this.DoSemiFinal.UseVisualStyleBackColor = true;
@@ -64,9 +65,10 @@
             // 
             // DoFinal
             // 
-            this.DoFinal.Location = new System.Drawing.Point(499, 91);
+            this.DoFinal.Location = new System.Drawing.Point(665, 112);
+            this.DoFinal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DoFinal.Name = "DoFinal";
-            this.DoFinal.Size = new System.Drawing.Size(175, 80);
+            this.DoFinal.Size = new System.Drawing.Size(233, 98);
             this.DoFinal.TabIndex = 2;
             this.DoFinal.Text = "Распределить финал";
             this.DoFinal.UseVisualStyleBackColor = true;
@@ -74,9 +76,10 @@
             // 
             // DoResult
             // 
-            this.DoResult.Location = new System.Drawing.Point(62, 193);
+            this.DoResult.Location = new System.Drawing.Point(83, 238);
+            this.DoResult.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DoResult.Name = "DoResult";
-            this.DoResult.Size = new System.Drawing.Size(108, 80);
+            this.DoResult.Size = new System.Drawing.Size(144, 98);
             this.DoResult.TabIndex = 3;
             this.DoResult.Text = "Перенести балы в общую таблицу";
             this.DoResult.UseVisualStyleBackColor = true;
@@ -84,9 +87,10 @@
             // 
             // Sort
             // 
-            this.Sort.Location = new System.Drawing.Point(204, 193);
+            this.Sort.Location = new System.Drawing.Point(272, 238);
+            this.Sort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Sort.Name = "Sort";
-            this.Sort.Size = new System.Drawing.Size(132, 69);
+            this.Sort.Size = new System.Drawing.Size(176, 85);
             this.Sort.TabIndex = 4;
             this.Sort.Text = "Сортировать общую таблицу";
             this.Sort.UseVisualStyleBackColor = true;
@@ -94,29 +98,21 @@
             // 
             // RebuiltKarts
             // 
-            this.RebuiltKarts.Location = new System.Drawing.Point(204, 279);
+            this.RebuiltKarts.Location = new System.Drawing.Point(272, 343);
+            this.RebuiltKarts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.RebuiltKarts.Name = "RebuiltKarts";
-            this.RebuiltKarts.Size = new System.Drawing.Size(132, 69);
+            this.RebuiltKarts.Size = new System.Drawing.Size(176, 85);
             this.RebuiltKarts.TabIndex = 5;
             this.RebuiltKarts.Text = "Пересобрать карты";
             this.RebuiltKarts.UseVisualStyleBackColor = true;
             this.RebuiltKarts.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(656, 358);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(132, 69);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Заменить карты у выделенного пилота";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Visible = false;
-            // 
             // clear
             // 
-            this.clear.Location = new System.Drawing.Point(58, 373);
+            this.clear.Location = new System.Drawing.Point(77, 459);
+            this.clear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.clear.Name = "clear";
-            this.clear.Size = new System.Drawing.Size(112, 65);
+            this.clear.Size = new System.Drawing.Size(149, 80);
             this.clear.TabIndex = 7;
             this.clear.Text = "Очистить";
             this.clear.UseVisualStyleBackColor = true;
@@ -124,17 +120,19 @@
             // 
             // numbersOfKarts
             // 
-            this.numbersOfKarts.Location = new System.Drawing.Point(342, 281);
+            this.numbersOfKarts.Location = new System.Drawing.Point(456, 346);
+            this.numbersOfKarts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numbersOfKarts.Name = "numbersOfKarts";
-            this.numbersOfKarts.Size = new System.Drawing.Size(100, 146);
+            this.numbersOfKarts.Size = new System.Drawing.Size(132, 179);
             this.numbersOfKarts.TabIndex = 8;
             this.numbersOfKarts.Text = "";
             // 
             // DoOneRace
             // 
-            this.DoOneRace.Location = new System.Drawing.Point(58, 5);
+            this.DoOneRace.Location = new System.Drawing.Point(77, 6);
+            this.DoOneRace.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DoOneRace.Name = "DoOneRace";
-            this.DoOneRace.Size = new System.Drawing.Size(175, 80);
+            this.DoOneRace.Size = new System.Drawing.Size(233, 98);
             this.DoOneRace.TabIndex = 9;
             this.DoOneRace.Text = "Распределить 1 хит";
             this.DoOneRace.UseVisualStyleBackColor = true;
@@ -142,9 +140,10 @@
             // 
             // RebuildPilots
             // 
-            this.RebuildPilots.Location = new System.Drawing.Point(276, 11);
+            this.RebuildPilots.Location = new System.Drawing.Point(368, 14);
+            this.RebuildPilots.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.RebuildPilots.Name = "RebuildPilots";
-            this.RebuildPilots.Size = new System.Drawing.Size(132, 69);
+            this.RebuildPilots.Size = new System.Drawing.Size(176, 85);
             this.RebuildPilots.TabIndex = 10;
             this.RebuildPilots.Text = "Пересобрать пилотов";
             this.RebuildPilots.UseVisualStyleBackColor = true;
@@ -152,9 +151,10 @@
             // 
             // DeleteLastUsedKart
             // 
-            this.DeleteLastUsedKart.Location = new System.Drawing.Point(499, 358);
+            this.DeleteLastUsedKart.Location = new System.Drawing.Point(855, 440);
+            this.DeleteLastUsedKart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DeleteLastUsedKart.Name = "DeleteLastUsedKart";
-            this.DeleteLastUsedKart.Size = new System.Drawing.Size(132, 69);
+            this.DeleteLastUsedKart.Size = new System.Drawing.Size(176, 85);
             this.DeleteLastUsedKart.TabIndex = 11;
             this.DeleteLastUsedKart.Text = "Удалить карты последнего хита";
             this.DeleteLastUsedKart.UseVisualStyleBackColor = true;
@@ -162,21 +162,21 @@
             // 
             // SprintReg
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.DeleteLastUsedKart);
             this.Controls.Add(this.RebuildPilots);
             this.Controls.Add(this.DoOneRace);
             this.Controls.Add(this.numbersOfKarts);
             this.Controls.Add(this.clear);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.RebuiltKarts);
             this.Controls.Add(this.Sort);
             this.Controls.Add(this.DoResult);
             this.Controls.Add(this.DoFinal);
             this.Controls.Add(this.DoSemiFinal);
             this.Controls.Add(this.DoThreeRaces);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SprintReg";
             this.Text = "SprintReg";
             this.Load += new System.EventHandler(this.SprintReg_Load);
@@ -192,7 +192,6 @@
         private System.Windows.Forms.Button DoResult;
         private System.Windows.Forms.Button Sort;
         private System.Windows.Forms.Button RebuiltKarts;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button clear;
         private System.Windows.Forms.RichTextBox numbersOfKarts;
         private System.Windows.Forms.Button DoOneRace;

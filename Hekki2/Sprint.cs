@@ -22,7 +22,7 @@ namespace Hekki2
                 pilots.Add(new Pilot(pilotName));
             totalPilots = pilots.Count;
             TotalRacesCount = totalPilots > 16 ? 3 : 4;
-            ExcelWorker.CleanData(4);
+            ExcelWorker.CleanData();
 
             for (int i = 0; i < 3; i++)
                 Race.StartHeatRace(pilots, numbersKarts, i);
@@ -70,11 +70,7 @@ namespace Hekki2
 
         public static void ReadScor()
         {
-            var dic = ExcelWorker.ReadScoresInRace(totalPilots);
-            foreach (var pilot in pilots)
-            {
-                pilot.AddScore(dic);
-            }
+            pilots = ExcelWorker.ReadScoresInRace(pilots);
             ExcelWorker.WriteScoreInTotalBoard(pilots);
         }
 

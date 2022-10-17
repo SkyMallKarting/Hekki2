@@ -13,14 +13,17 @@ namespace Hekki
         public int Score;
         public int KartsCount { get { return _usedKarts.Count; } }
         public int ScoresCount { get { return _scores.Count; } }
-        public int TimesCount { get { return _times.Count; } } 
+        public int TimesCount { get { return _times.Count; } }
         public string Name { get { return _name; } set { _name = value; } }
         public Pilot(string name)
         {
             Name = name;
         }
-
-        public Pilot(List<int> usedKarts, string name, List<int> scores)
+        public string GetName()
+        {
+            return _name;
+        }
+        public Pilot(List<int> usedKarts, string name, List<int> scores, List<string> times)
         {
             for (int i = 0; i < usedKarts.Count; i++)
                 _usedKarts.Add(usedKarts[i]);
@@ -31,10 +34,12 @@ namespace Hekki
                 _scores.Add(scores[i]);
 
             Score = scores.Sum();
-            
+
+            for (int i = 0; i < times.Count; i++)
+                _times.Add(times[i]);
         }
 
-        public void AddNumberKart(int numberKart, int numberRace)
+        public void AddNumberKart(int numberKart)
         {
             if (numberKart == 0)
                 throw new Exception();
@@ -60,7 +65,7 @@ namespace Hekki
             {
                 return _usedKarts[numberRace - 1].ToString();
             }
-            
+
         }
 
         public string GetAllNumbersKarts()
@@ -83,6 +88,12 @@ namespace Hekki
             Score = _scores.Sum();
         }
 
+        public void AddScore(int score)
+        {
+            _scores.Add(score);
+            Score = _scores.Sum();
+        }
+
         public int GetScoreByNumberRace(int numberRace)
         {
             return _scores[numberRace];
@@ -97,9 +108,9 @@ namespace Hekki
             catch (Exception)
             {
 
-               
+
             }
-            
+
         }
 
         public void AddEmptyScore()
@@ -126,10 +137,26 @@ namespace Hekki
             }
         }
 
+        public void AddTime(string time)
+        {
+            _times.Add(time);
+        }
+
         public string GetTimeByIndex(int index)
         {
             return _times[index];
         }
-       
+
+        public static void ClearTimeGlobal(List<Pilot> pilots)
+        {
+            foreach (var pilot in pilots)
+                pilot._times.Clear();
+        }
+
+        public static void ClearScoreGlobal(List<Pilot> pilots)
+        {
+            foreach (var pilot in pilots)
+                pilot._scores.Clear();
+        }
     }
 }

@@ -46,27 +46,34 @@ namespace Hekki
             ExcelWorker.WriteNames(groups, numberRace, "Пилоты");
         }
 
-        public static void RemoveWorstPilots(List<Pilot> sortedPilots)
+        public static void StartRandomRace(List<Pilot> pilots, List<int> numbers)
         {
-            for (int i = 0; i < CountPilotsInLastGroup; i++)
+            List<List<Pilot>> groups = new List<List<Pilot>>();
+            var combos = Combination.GetComboEveryOnEvery(pilots.Count, numbers.Count);
+            Shuffle(pilots);
+            for (int i = 0; i < pilots.Count; i++)
             {
-                sortedPilots.RemoveAt(sortedPilots.Count - 1);
+                DoAssignmentByCombo(pilots, numbers, combos[i]);
+                groups.Add(new List<Pilot>());
+                for (int j = 0; j < numbers.Count; j++)
+                {
+                    groups[0].Add(pilots[combos[i][j]]);
+                }
+                ExcelWorker.WriteNames(groups, i, "Пилоты");
+                groups.Clear();
+            }    
+        }
+
+        public static void DoAssignmentByCombo(List<Pilot> pilots, List<int> numbers, List<int> combo)
+        {
+            List<Pilot> zaezd = new List<Pilot>();
+            for (int i = 0; i < combo.Count; i++)
+            {
+                pilots[combo[i]].AddNumberKart(numbers[i]);
+                zaezd.Add(pilots[combo[i]]);
             }
         }
 
-        public static void AddInfoForLosers(List<Pilot> pilots, int repeatTimes)
-        {
-            for (int j = 0, x = pilots.Count - CountPilotsInLastGroup; j < CountPilotsInLastGroup; j++)
-            {
-                for (int i = 0; i < repeatTimes; i++)
-                {
-                    pilots[x].AddEmptyScore();
-                    pilots[x].AddEmptyNumberKart();
-                }
-                x++;
-            }
-            
-        }
 
         public static void ReBuildCountPilotsInFirstGroup(List<int> numbers)
         {
@@ -97,7 +104,7 @@ namespace Hekki
                 {
                     if (Pilot.IsCanBeAdd(group[j], copyNumbersOfKarts[k]))
                     {
-                        group[j].AddNumberKart(copyNumbersOfKarts[k], numberRace);
+                        group[j].AddNumberKart(copyNumbersOfKarts[k]);
                         copyNumbersOfKarts.RemoveAt(k);
                         break;
                     }
@@ -119,7 +126,7 @@ namespace Hekki
                 return;
             for (int i = 0; i < group.Count; i++)
             {
-                group[i].AddNumberKart(combo[i], numberRace);
+                group[i].AddNumberKart(combo[i]);
             }
         }
 
@@ -170,16 +177,26 @@ namespace Hekki
             var names = ExcelWorker.ReadNamesInTotalBoard();
             var kartsMerged = ExcelWorker.ReadUsedKartsInTotalBoard();
             var scoresMerged = ExcelWorker.ReadScoresInTotalBoard(countPilots);
+            var timesMerged = ExcelWorker.ReadTimesInTotalBoard(countPilots);
 
             for (int i = 0; i < countPilots; i++)
             {
                 List<int> karts = new List<int>();
                 List<int> scores = new List<int>();
+                List<string> times = new List<string>();
+
                 if (kartsMerged.Count != 0)
                 {
                     for (int j = 0; j < kartsMerged[i].Count; j++)
                     {
                         karts.Add(kartsMerged[i][j]);
+                    }
+                }
+                if (timesMerged.Count != 0)
+                {
+                    for (int j = 0; j < timesMerged[i].Count; j++)
+                    {
+                        times.Add(timesMerged[i][j]);
                     }
                 }
                 if (scoresMerged.Count != 0 && scoresMerged[i].Sum() != 0)
@@ -190,7 +207,7 @@ namespace Hekki
                     }
                 }
                 
-                pilots.Add(new Pilot(karts, names[i], scores));
+                pilots.Add(new Pilot(karts, names[i], scores, times));
             }
             return pilots;
         }

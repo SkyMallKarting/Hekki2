@@ -35,13 +35,15 @@
             this.DoRace2 = new System.Windows.Forms.Button();
             this.WriteTime = new System.Windows.Forms.Button();
             this.SortAllTimes = new System.Windows.Forms.Button();
+            this.clear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // RebuildPilots
             // 
-            this.RebuildPilots.Location = new System.Drawing.Point(79, 76);
+            this.RebuildPilots.Location = new System.Drawing.Point(105, 94);
+            this.RebuildPilots.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.RebuildPilots.Name = "RebuildPilots";
-            this.RebuildPilots.Size = new System.Drawing.Size(132, 69);
+            this.RebuildPilots.Size = new System.Drawing.Size(176, 85);
             this.RebuildPilots.TabIndex = 6;
             this.RebuildPilots.Text = "Пересобрать пилотов";
             this.RebuildPilots.UseVisualStyleBackColor = true;
@@ -49,17 +51,19 @@
             // 
             // numbersOfKarts
             // 
-            this.numbersOfKarts.Location = new System.Drawing.Point(481, 259);
+            this.numbersOfKarts.Location = new System.Drawing.Point(641, 319);
+            this.numbersOfKarts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numbersOfKarts.Name = "numbersOfKarts";
-            this.numbersOfKarts.Size = new System.Drawing.Size(100, 146);
+            this.numbersOfKarts.Size = new System.Drawing.Size(132, 179);
             this.numbersOfKarts.TabIndex = 9;
             this.numbersOfKarts.Text = "";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(332, 259);
+            this.button1.Location = new System.Drawing.Point(443, 319);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 69);
+            this.button1.Size = new System.Drawing.Size(176, 85);
             this.button1.TabIndex = 10;
             this.button1.Text = "Пересобрать карты";
             this.button1.UseVisualStyleBackColor = true;
@@ -67,9 +71,10 @@
             // 
             // DoRace1
             // 
-            this.DoRace1.Location = new System.Drawing.Point(263, 70);
+            this.DoRace1.Location = new System.Drawing.Point(351, 86);
+            this.DoRace1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DoRace1.Name = "DoRace1";
-            this.DoRace1.Size = new System.Drawing.Size(175, 80);
+            this.DoRace1.Size = new System.Drawing.Size(233, 98);
             this.DoRace1.TabIndex = 15;
             this.DoRace1.Text = "Распределить Гонку 1";
             this.DoRace1.UseVisualStyleBackColor = true;
@@ -77,9 +82,10 @@
             // 
             // DoRace2
             // 
-            this.DoRace2.Location = new System.Drawing.Point(492, 70);
+            this.DoRace2.Location = new System.Drawing.Point(656, 86);
+            this.DoRace2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DoRace2.Name = "DoRace2";
-            this.DoRace2.Size = new System.Drawing.Size(175, 80);
+            this.DoRace2.Size = new System.Drawing.Size(233, 98);
             this.DoRace2.TabIndex = 16;
             this.DoRace2.Text = "Распределить Гонку 2";
             this.DoRace2.UseVisualStyleBackColor = true;
@@ -87,9 +93,10 @@
             // 
             // WriteTime
             // 
-            this.WriteTime.Location = new System.Drawing.Point(79, 307);
+            this.WriteTime.Location = new System.Drawing.Point(105, 378);
+            this.WriteTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.WriteTime.Name = "WriteTime";
-            this.WriteTime.Size = new System.Drawing.Size(108, 80);
+            this.WriteTime.Size = new System.Drawing.Size(144, 98);
             this.WriteTime.TabIndex = 21;
             this.WriteTime.Text = "Перенести время в общую таблицу";
             this.WriteTime.UseVisualStyleBackColor = true;
@@ -97,19 +104,31 @@
             // 
             // SortAllTimes
             // 
-            this.SortAllTimes.Location = new System.Drawing.Point(79, 203);
+            this.SortAllTimes.Location = new System.Drawing.Point(105, 250);
+            this.SortAllTimes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SortAllTimes.Name = "SortAllTimes";
-            this.SortAllTimes.Size = new System.Drawing.Size(108, 80);
+            this.SortAllTimes.Size = new System.Drawing.Size(144, 98);
             this.SortAllTimes.TabIndex = 22;
             this.SortAllTimes.Text = "Сортировать времена";
             this.SortAllTimes.UseVisualStyleBackColor = true;
             this.SortAllTimes.Click += new System.EventHandler(this.SortAllTimes_Click);
             // 
+            // clear
+            // 
+            this.clear.Location = new System.Drawing.Point(877, 442);
+            this.clear.Margin = new System.Windows.Forms.Padding(4);
+            this.clear.Name = "clear";
+            this.clear.Size = new System.Drawing.Size(149, 80);
+            this.clear.TabIndex = 23;
+            this.clear.Text = "Очистить";
+            this.clear.UseVisualStyleBackColor = true;
+            // 
             // SchoolReg
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.clear);
             this.Controls.Add(this.SortAllTimes);
             this.Controls.Add(this.WriteTime);
             this.Controls.Add(this.DoRace2);
@@ -117,6 +136,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.numbersOfKarts);
             this.Controls.Add(this.RebuildPilots);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SchoolReg";
             this.Text = "Form2";
             this.ResumeLayout(false);
@@ -132,5 +152,6 @@
         private System.Windows.Forms.Button DoRace2;
         private System.Windows.Forms.Button WriteTime;
         private System.Windows.Forms.Button SortAllTimes;
+        private System.Windows.Forms.Button clear;
     }
 }

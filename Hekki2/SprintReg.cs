@@ -49,12 +49,11 @@ namespace Hekki2
         private void DoResult_Click(object sender, EventArgs e)
         {
             Sprint.ReadScor();
-            //Sprint.Sort();
         }
 
         private void clear_Click(object sender, EventArgs e)
         {
-            ExcelWorker.CleanData(4);
+            ExcelWorker.CleanData();
         }
 
         private void button1_Click(object sender, EventArgs e)

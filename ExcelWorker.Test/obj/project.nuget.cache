@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Epqfn9nMczhvLDFMBMdELK3+rXg++BHN7fr+OnLlCo+YxuFonORKZMOMeAszr0c75h9iEc7xJKH9TY43cAHkPg==",
+  "dgSpecHash": "R7J7ZgePOHacigbRCC7ywjIxbhw0OJKfKloGekBXTKHPsiV34BfVULy3QmbHesDRFK7RIguJryHjAmq4xzvtqA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\an00t\\Source\\Repos\\Hekki2\\ExcelWorker.Test\\ExcelWorker.Test.csproj",
+  "projectFilePath": "C:\\Users\\an00t\\source\\repos\\Hekki2\\ExcelWorker.Test\\ExcelWorker.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\an00t\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\an00t\\.nuget\\packages\\microsoft.codecoverage\\17.1.0\\microsoft.codecoverage.17.1.0.nupkg.sha512",

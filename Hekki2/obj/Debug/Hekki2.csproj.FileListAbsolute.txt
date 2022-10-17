@@ -36,3 +36,5 @@ C:\Users\an00t\Source\Repos\Hekki2\Hekki2\bin\Debug\System.Drawing.Common.dll
 C:\Users\an00t\Source\Repos\Hekki2\Hekki2\bin\Debug\IronOcr.xml
 C:\Users\an00t\Source\Repos\Hekki2\Hekki2\bin\Debug\System.Drawing.Common.xml
 C:\Users\an00t\Source\Repos\Hekki2\Hekki2\obj\Debug\Hekki2.csproj.CopyComplete
+C:\Users\an00t\Source\Repos\Hekki2\Hekki2\obj\Debug\Hekki2.EveryReg.resources
+C:\Users\an00t\Source\Repos\Hekki2\Hekki2\obj\Debug\Hekki2.JuniorReg.resources

@@ -59,7 +59,7 @@ namespace Hekki2
 
         private void clear_Click(object sender, EventArgs e)
         {
-            ExcelWorker.CleanData(4);
+            ExcelWorker.CleanData();
         }
 
         private void RebuildKarts_Click(object sender, EventArgs e)
@@ -76,8 +76,7 @@ namespace Hekki2
 
         private void Sort_Click(object sender, EventArgs e)
         {
-            Range rangeToSort = ExcelWorker.GetRangeToSort();
-            rangeToSort.Sort(rangeToSort.Columns[8], XlSortOrder.xlDescending);
+            Cherkasy.SortScores();
         }
 
         private void DoFinal_Click(object sender, EventArgs e)
@@ -87,6 +86,12 @@ namespace Hekki2
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Cherkasy.ReBuildPilots();
+        }
+
+        private void DeleteLastUsedKart_Click(object sender, EventArgs e)
+        {
+            ExcelWorker.DeleteLastUsedKartsInTotalBoard();
             Cherkasy.ReBuildPilots();
         }
     }

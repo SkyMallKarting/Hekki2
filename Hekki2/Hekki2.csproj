@@ -76,6 +76,13 @@
   <ItemGroup>
     <Compile Include="Cherkasy.cs" />
     <Compile Include="Combination.cs" />
+    <Compile Include="Every.cs" />
+    <Compile Include="EveryReg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EveryReg.Designer.cs">
+      <DependentUpon>EveryReg.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExcelWorker.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -88,6 +95,13 @@
     </Compile>
     <Compile Include="CherkasyReg.Designer.cs">
       <DependentUpon>CherkasyReg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Junior.cs" />
+    <Compile Include="JuniorReg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JuniorReg.Designer.cs">
+      <DependentUpon>JuniorReg.cs</DependentUpon>
     </Compile>
     <Compile Include="School.cs" />
     <Compile Include="SchoolReg.cs">
@@ -113,8 +127,14 @@
     <EmbeddedResource Include="CherkasyReg.resx">
       <DependentUpon>CherkasyReg.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EveryReg.resx">
+      <DependentUpon>EveryReg.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JuniorReg.resx">
+      <DependentUpon>JuniorReg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -10,32 +10,6 @@ namespace Hekki2
 {
     internal class Combination
     {
-        private static int Factorial(int n)
-        {
-            var factorial = new BigInteger(1);
-            for (int i = 1; i <= n; i++)
-                factorial *= i;
-
-            return (int)factorial;
-        }
-
-        private static void AllVariables(List<int> numbers)
-        {
-            HashSet<List<int>> curr = new HashSet<List<int>>();
-
-            while (curr.Count < (int)Factorial(numbers.Count))
-            {
-                for (int i = 0; i < numbers.Count; i++)
-                {
-                    for (int j = 0; j < numbers.Count; j++)
-                    {
-                        var temp =
-                        curr.Add(numbers);
-                    }
-                }
-            }
-        }
-
         private static IEnumerable<List<int>> AllCombinations(List<int> arg, List<int> awithout)
         {
             if (arg.Count == 1)
@@ -67,24 +41,26 @@ namespace Hekki2
                 return result;
             }
         }
-        private static void ShowInfo(IEnumerable<int> arg)
-        {
-            foreach (var str in arg)
-                Console.Write(str);
-            Console.WriteLine();
-        }
 
         public static List<int> GetAvaibleCombo(List<int> numbersKarts, List<Pilot> pilots)
         {
+            Random rnd = new Random();
             var totallist = new List<int>(numbersKarts);
             var allcombis = AllCombinations(totallist, new List<int>());
             var allcombi = allcombis.ToList();
+            List<int> spare = new List<int>();
+            List<int> nums = new List<int>();
 
             for (int i = 0; i < pilots.Count; i++)
             {
+                if (allcombi.Count > 0)
+                {
+                    spare = allcombi[rnd.Next(allcombi.Count)];
+                }
                 for (int j = 0; j < pilots[i].GetNumbersKarts().Count; j++)
                 {
-                    List<int> nums = new List<int>();
+                    nums.Clear();
+                   
                     int count = 0;
                     foreach (var combi in allcombi)
                     {
@@ -101,19 +77,40 @@ namespace Hekki2
 
                 }
             }
-
-            Random rnd = new Random();
+            
             if (allcombi.Count == 0)
             {
-                return new List<int>();
+                return spare;
             }
             else
                 return allcombi[rnd.Next(allcombi.Count)];
         }
 
-        public static void AllAvaibleCombos()
-        { 
-
+        public static List<List<int>> GetComboEveryOnEvery(int pilotsCount, int kartsCount)
+        {
+            List<int> pilotsIndexs = Enumerable.Range(0, pilotsCount).ToList();
+            var items = Shuffle(pilotsIndexs).Select((d, i) => pilotsIndexs.Concat(pilotsIndexs).Skip(i).Take(kartsCount));
+            List<List<int>> combos = new List<List<int>>();
+            foreach (var item in items)
+            {
+                combos.Add(item.ToList());
+            }
+            Shuffle(combos);
+            return combos;
+        }
+        private static IList<T> Shuffle<T>(IList<T> list)
+        {
+            Random rnd = new Random();
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rnd.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+            return list;
         }
     }
 }
